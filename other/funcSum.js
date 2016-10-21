@@ -321,7 +321,6 @@ var serializeObject = function() {
  * 
  * @functionName: exportFileByForm
  * @Description: form表单导出文件
- * 
  */
 function exportFileByForm(url, params, button) {
 	var orgText = $(button).text();
