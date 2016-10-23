@@ -1,0 +1,6 @@
+/*针对firefox*/
+@-moz-document url-prefix() {
+   .btnPrimary {padding: 3px 12px;}
+   .btnSmall{padding: 2px 5px;}
+}
+
