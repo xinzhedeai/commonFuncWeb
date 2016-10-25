@@ -1,3 +1,11 @@
 @import url(common.css); /*导入外部css文件 放到最上方*/
-box-shadow: 0 3px 10px 0 #999;//框影
+box-shadow: 0 3px 10px 0 #999;/*框影*/
 text-shadow: 0 0 50px #eb1d21;
+font: 12px Times New Roman; 
+font-family:Microsoft Yahei
+font: 12px "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+text-decoration:underline;/*去掉超链接下划线*/
+background:url(../img/iPhone.png) -1px -234px no-repeat;
+list-style-type:none;}/*去掉ul li的标志符号*/
+text-indent:-999em;;/*文字间的距离---999em主要是隐藏图片文字。例如caption的值有什么意义啊？*/
+input[type="text"]:focus{outline:0;}/*获取焦点时，没有外面的状态框*/

@@ -1,0 +1,34 @@
+{
+	"international": "国际化",
+	"language": {
+		"cnTitle": "中文",
+		"enTitle": "英文"
+	},
+  	"button": {
+  		"edit": "编辑",
+  		"hoverMe": "摸我",
+  		"hoverTitle": "翻译的title"
+  	},
+  	"placeholder" : {
+  		"company_type": "翻译的placeholder"
+  	},
+  	"alert": {
+  		"hover_message": "是摸我,不是点我!"
+  	},
+  	"company": {
+  		"company_title": "公司信息",
+    	"company_type": "公司类型",
+    	"company_nm": "公司名称",
+    	"company_level": "公司等级",
+    	"address": "公司地址"
+  	},
+  	"user": {
+  		"user_title": "用户信息",
+    	"user_id": "用户ID",
+    	"user_nm": "姓名",
+    	"user_level": "等级",
+    	"user_status": "状态",
+    	"user_tel": "电话",
+    	"user_mail": "邮箱"
+  	}
+}

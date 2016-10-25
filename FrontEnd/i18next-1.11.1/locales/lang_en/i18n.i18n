@@ -1,0 +1,34 @@
+{
+	"international": "International",
+	"language": {
+		"cnTitle": "Chinese",
+		"enTitle": "English"
+	},
+  	"button": {
+  		"edit": "edit",
+  		"hoverMe": "hoverMe",
+  		"hoverTitle": "translated title"
+  	},
+  	"placeholder" : {
+  		"company_type": "translated placeholder"
+  	},
+  	"alert": {
+  		"hover_message": "It's hover me,not click me!"
+  	},
+  	"company": {
+  		"company_title": "Company Info",
+    	"company_type": "company type",
+    	"company_nm": "company name",
+    	"company_level": "company level",
+    	"address": "address"
+  	},
+  	"user": {
+  		"user_title": "User Info",
+    	"user_id": "user ID",
+    	"user_nm": "user name",
+    	"user_level": "user level",
+    	"user_status": "user status",
+    	"user_tel": "user tel",
+    	"user_mail": "user mail"
+  	}
+}
