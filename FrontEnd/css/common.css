@@ -4,6 +4,7 @@ text-shadow: 0 0 50px #eb1d21;
 font: 12px Times New Roman; 
 font-family:Microsoft Yahei
 font: 12px "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 text-decoration:underline;/*去掉超链接下划线*/
 background:url(../img/iPhone.png) -1px -234px no-repeat;
 list-style-type:none;}/*去掉ul li的标志符号*/

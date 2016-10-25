@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+<title></title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="author" content="Double" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="/lib/js/includeHead.js"></script>
+<script type="text/javascript" src="dialog.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="defaultbox"></div>
+			<div class="menuWrapper">
+				<div class="menuCnm">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="subMenuWrapper">
+				<div class="subMenu"></div>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="leftMenuWrapper">
+				<div class="leftTitle"></div>
+				<div class="leftMenu">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="acticle">
+				<div class="location">
+					<p>
+						<a><img src="/lib/img/ico/ico_home.png" alt="home" /></a>
+						<span><img src="/lib/img/ico/ico_navi.png" alt="&gt;" /></span>
+						<span>弹出框</span>
+						<span><img src="/lib/img/ico/ico_navi.png" alt="&gt;" /></span>
+						<span class="fontS">弹出框</span>
+					</p>
+				</div>
+				<p class="acticleTitle"></p>
+				<table class="verticalTable">
+					<caption>基本弹窗</caption>
+					<colgroup>
+						<col width="" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>基本弹窗</th>
+							<th><button class="btnPrimary" id="btnShowDialog">显示</button></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<div class="easyui-tabs">
+					<div title="html">
+						<pre class="sourceCode"></pre>
+					</div>
+			        <div title="javascript">
+			        	<pre class="sourceCode">//显示基本弹窗
+$('#btnShowDialog').click(function() {
+	$('#dialog').showDialog();
+});</pre>
+			        </div>
+				</div>
+				<table class="verticalTable">
+					<caption>扩展弹窗</caption>
+					<colgroup>
+						<col width="" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>扩展弹窗</th>
+							<th><button class="btnPrimary" id="btnShowExtendDialog">显示</button></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<div class="easyui-tabs">
+					<div title="html">
+						<pre class="sourceCode"></pre>
+					</div>
+			        <div title="javascript">
+			        	<pre class="sourceCode">//显示扩展弹窗
+$('#btnShowExtendDialog').click(function() {
+	//模拟数据
+	var data = {
+		"id":"sample_table_tables",
+		"result":{
+			"total":5,
+			"summarys":null,
+			"rows":[{"birthday":"2015-01-08","name":"1111","tel":"15243434343"},
+					{"birthday":"2015-01-08","name":"1111","tel":"15243434343"},
+					{"birthday":"2015-01-08","name":"1111","tel":"15243434343"},
+					{"birthday":"2015-01-08","name":"1111","tel":"15243434343"},
+					{"birthday":"2015-01-08","name":"1111","tel":"15243434343"}]},
+			"errMsg":"Success",
+			"errCd":0,
+			"trId":"*oqc_sample_table_tables_1439779290668"
+	};
+	
+	var datagridElement = '#popupVerticalTable',
+ 	columns = [ {
+		field : 'name',
+		title : 'name',
+		width : 100
+	}, {
+		field : 'email',
+		title : 'email',
+		width : 100
+	}, {
+		field : 'birthday',
+		title : 'birthday',
+		width : 100
+	}, {
+		field : 'tel',
+		title : 'tel',
+		width : 100
+	} ],
+ 	options = {
+		columns : columns,
+		data : data
+	};
+	
+	//创建弹框中用于显示数据的垂直表格
+	$('#popupVerticalTable').createVerticalTable(options);
+	
+	$('#extendDialog').showDialog();
+});</pre>
+			        </div>
+				</div>
+				<table class="verticalTable">
+					<caption>弹窗-嵌套datagrid</caption>
+					<colgroup>
+						<col width="" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>弹窗-嵌套datagrid</th>
+							<th><button class="btnPrimary" id="btnShowDgDialog">显示</button></th>
+						</tr>
+					</thead>
+				</table>
+				<table class="verticalTable">
+					<caption>Alert</caption>
+					<colgroup>
+						<col width="" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>Alert</th>
+							<th><button class="btnPrimary" id="btnShowAlert">显示</button></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<div class="easyui-tabs">
+					<div title="html">
+						<pre class="sourceCode"></pre>
+					</div>
+			        <div title="javascript">
+			        	<pre class="sourceCode">//alert
+$('#btnShowAlert').click(function() {
+	$alert('Hello, I\'m a alert.');
+});</pre>
+			        </div>
+				</div>
+				<table class="verticalTable">
+					<caption>Confirm</caption>
+					<colgroup>
+						<col width="" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>Confirm</th>
+							<th><button class="btnPrimary" id="btnShowConfirm">显示</button></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<div class="easyui-tabs">
+					<div title="html">
+						<pre class="sourceCode"></pre>
+					</div>
+			        <div title="javascript">
+			        	<pre class="sourceCode">//confirm
+$('#btnShowConfirm').click(function() {
+	$confirm('Hello, I\'m a confirm.', function() {
+		$alert('你点击了确认按钮.');
+	});
+});</pre>
+			        </div>
+				</div>
+				<table class="verticalTable">
+					<caption>弹窗-自定义</caption>
+					<colgroup>
+						<col width="" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>弹窗-自定义</th>
+							<th><button class="btnPrimary" id="btnShowOwnDialog">显示</button></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<div class="easyui-tabs">
+					<div title="html">
+						<pre class="sourceCode"></pre>
+					</div>
+			        <div title="javascript">
+			        	<pre class="sourceCode">//自定义弹窗
+$('#btnShowOwnDialog').click(function() {
+		$dialog({title : '测试dialog'},{id : 'testDialog'}, {width : '700'}, {height : ''},
+				{content : \'\'},
+				{buttons : [
+				            { text: "她来了", handler: function() { $alert($('#testDialog #air_bag_id').text());} },
+				            { text: "我来了", handler: function() { $alert($('#testDialog #master_id').text());} }
+				] }
+		);
+});</pre>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- dialog -->
+	<div class="popupWrapper" id="dialog">
+		<div class="aplPopupWrapper">
+			<div class="aplPopupTitle">
+				<div class="aplPopupTitleFont">详细信息</div>
+				<div class="aplPopupXbtn"><a title="关闭"><img src="/lib/img/btn/btn_popupX.png" alt="关闭"/></a></div>
+			</div>
+			<form>
+				<table class="popupTable" summary="弹框详情">
+					<colgroup>
+						<col width="100"/>
+						<col width="249"/>
+						<col width="100"/>
+						<col width=""/> 
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>text</th>
+							<td>
+								I'm one piece of pure text.
+							</td>
+							<th>startDate</th>
+							<td>
+								<input type="text" class="startDate" value="" readonly="readonly" />
+							</td>
+						</tr>
+						<tr>
+							<th>startDate-endDate</th>
+							<td colspan="3">
+								<input type="text" class="startDate" value="" readonly="readonly" /> -
+								<input type="text" class="endDate" value="" readonly="readonly" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectSmall</th>
+							<td>
+								<select class="selectSmall">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<th>inputSmall</th>
+							<td>
+								<input type="text" class="inputSmall" value="" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectNormal</th>
+							<td>
+								<select class="selectNormal">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<th>inputNormal<span>*</span></th>
+							<td>
+								<input type="text" class="inputNormal" value="" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectMiddle</th>
+							<td colspan="3">
+								<select class="selectMiddle">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>inputMiddle</th>
+							<td colspan="3">
+								<input type="text" class="inputMiddle" value="15865986585" />
+							</td>
+						</tr>
+						<tr>
+							<th>inputFit</th>
+							<td colspan="3">
+								<input type="text" class="inputFit" value="15865986585" />
+							</td>
+						</tr>
+						<tr>
+							<th>textareaFit</th>
+							<td colspan="3">
+								<textarea class="textareaFit">
+细节 1:  2014年7月23日, 注册ID 
+细节 2:  2015年8月15日, 修改信息</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<div class="btnbox">
+				<button class="btnPrimary btnEdit">编辑</button>
+				<button class="btnPrimary">确认</button>	
+				<button class="btnPrimary btnCancel">取消</button>
+			</div>
+		</div>
+	</div>
+	
+	<!-- extend dialog -->
+	<div class="popupWrapper" id="extendDialog">
+		<div class="aplPopupWrapper">
+			<div class="aplPopupTitle">
+				<div class="aplPopupTitleFont">详细信息</div>
+				<div class="aplPopupXbtn"><a title="关闭"><img src="/lib/img/btn/btn_popupX.png" alt="关闭"/></a></div>
+			</div>
+			<form>
+				<div class="popupExdTitle">基本信息</div>
+				<table class="popupTable" summary="弹框详情">
+					<colgroup>
+						<col width="100"/>
+						<col width="249"/>
+						<col width="100"/>
+						<col width=""/> 
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>text</th>
+							<td>
+								I'm one piece of pure text.
+							</td>
+							<th>startDate</th>
+							<td>
+								<input type="text" class="startDate" value="" readonly="readonly" />
+							</td>
+						</tr>
+						<tr>
+							<th>startDate-endDate</th>
+							<td colspan="3">
+								<input type="text" class="startDate" value="" readonly="readonly" /> -
+								<input type="text" class="endDate" value="" readonly="readonly" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectSmall</th>
+							<td>
+								<select class="selectSmall">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<th>inputSmall</th>
+							<td>
+								<input type="text" class="inputSmall" value="" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectNormal</th>
+							<td>
+								<select class="selectNormal">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<th>inputNormal<span>*</span></th>
+							<td>
+								<input type="text" class="inputNormal" value="" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectMiddle</th>
+							<td colspan="3">
+								<select class="selectMiddle">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>inputMiddle</th>
+							<td colspan="3">
+								<input type="text" class="inputMiddle" value="15865986585" />
+							</td>
+						</tr>
+						<tr>
+							<th>textareaFit</th>
+							<td colspan="3">
+								<textarea class="textareaFit">细节 1:  2014年7月23日, 注册ID
+细节 2:  2015年8月15日, 修改信息</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="popupExdTitle">扩展信息</div>
+				<table id="popupVerticalTable"></table>
+			</form>
+			<div class="btnbox">
+				<button class="btnPrimary btnEdit">编辑</button>
+				<button class="btnPrimary">确认</button>	
+				<button class="btnPrimary btnCancel">取消</button>
+			</div>
+		</div>
+	</div>
+	
+	<!-- dialog with datagrid -->
+	<div class="popupWrapper" id="datagridDialog">
+		<div class="aplPopupWrapper">
+			<div class="aplPopupTitle">
+				<div class="aplPopupTitleFont">详细信息</div>
+				<div class="aplPopupXbtn"><a title="关闭"><img src="/lib/img/btn/btn_popupX.png" alt="关闭"/></a></div>
+			</div>
+			<form>
+				<div class="popupExdTitle">基本信息</div>
+				<table class="popupTable" summary="弹框详情">
+					<colgroup>
+						<col width="100"/>
+						<col width="249"/>
+						<col width="100"/>
+						<col width=""/> 
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>selectNormal</th>
+							<td>
+								<select class="selectNormal">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<th>inputNormal</th>
+							<td>
+								<input type="text" class="inputNormal" value="" />
+							</td>
+						</tr>
+						<tr>
+							<th>selectSmall</th>
+							<td>
+								<select class="selectSmall">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<th>inputSmall</th>
+							<td>
+								<input type="text" class="inputSmall" value="" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<div class="popupExdTitle">扩展信息</div>
+			<div class="popupExdBtns">
+				<button class="btnPrimary" id="searchBtn">查询</button>
+				<button class="btnPrimary" id="clearBtn">清空</button>
+			</div>
+			<table id="datagridDlg"></table>
+			<div class="btnbox">
+				<button class="btnPrimary btnEdit">编辑</button>
+				<button class="btnPrimary">确认</button>	
+				<button class="btnPrimary btnCancel">取消</button>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		//基本弹窗
+		$('.easyui-tabs:eq(0) pre:eq(0)').text('\t' + $('#btnShowDialog').parent().html() + '\n\n\t<!-- dialog -->\n\t<div class="popupWrapper" id="dialog">' + $('#dialog').html() + '</div>');
+
+		//扩展弹窗
+		$('.easyui-tabs:eq(1) pre:eq(0)').text('\t' + $('#btnShowExtendDialog').parent().html() + '\n\n\t<!-- extend dialog -->\n\t<div class="popupWrapper" id="extendDialog">' + $('#extendDialog').html() + '</div>');
+	
+		//alert
+		$('.easyui-tabs:eq(2) pre:eq(0)').text($('#btnShowAlert').parent().html());
+		
+		//confirm
+		$('.easyui-tabs:eq(3) pre:eq(0)').text($('#btnShowConfirm').parent().html());
+		
+	</script>
+	
+</body>
+</html>

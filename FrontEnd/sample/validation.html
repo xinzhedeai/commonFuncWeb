@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+<title></title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="author" content="Double" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="/lib/js/includeHead.js"></script>
+<script type="text/javascript" src="validation.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<!-- cls:header start -->
+		<div class="header">
+			<div class="defaultbox"></div>
+			<div class="menuWrapper">
+				<div class="menuCnm">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="subMenuWrapper">
+				<div class="subMenu"></div>
+			</div>
+		</div>
+		<!-- cls:header end -->
+		<div class="contents">
+			<div class="leftMenuWrapper">
+				<div class="leftTitle"></div>
+				<div class="leftMenu">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="acticle">
+				<div class="location">
+					<p>
+						<a><img src="/lib/img/ico/ico_home.png" alt="home" /></a>
+						<span><img src="/lib/img/ico/ico_navi.png" alt="&gt;" /></span>
+						<span>表单</span>
+						<span><img src="/lib/img/ico/ico_navi.png" alt="&gt;" /></span>
+						<span class="fontS">表单验证</span>
+					</p>
+				</div>
+				<p class="acticleTitle"></p>
+				<div class="searchTilte">基本验证</div>
+				<div class="searchBtns">
+					<button id="validateAll" class="btnPrimary">验证全部</button>
+				</div>
+				<form id="formID">
+					<table class="horizontalTable">
+						<caption>基本验证</caption>
+						<colgroup>
+							<col width="130" />
+							<col width="412" />
+							<col width="130" />
+							<col width="" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>内容必填<span>*</span></th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="required:true" />
+									<!-- <input type="text" class="startDate" value="" readonly="readonly" /> -->
+								</td>
+								<th>e-mail</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'email'" />
+									<!-- <input type="text" class="endDate" value="" readonly="readonly" /> -->
+								</td>
+							</tr>
+							<tr>
+								<th>长度限制(easyui)</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'length[3,20]'" />
+								</td>
+								<th>最大长度(html)</th>
+								<td>
+									<input type="text" class="inputNormal" maxlength="5" />
+								</td>
+							</tr>
+							<tr>
+								<th>url</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'url'" />
+								</td>
+								<th>字母数字划线</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'code'" />
+									<button type="button" class="btnPrimary" id="validateOne">验证单个</button>
+								</td>
+							</tr>
+							<tr>
+								<th>密码必填<span>*</span></th>
+								<td>
+									<input type="password" class="easyui-validatebox inputNormal" id="pwd" data-options="required:true" />
+								</td>
+								<th>确认密码<span>*</span></th>
+								<td>
+									<input type="password" class="easyui-validatebox inputNormal" data-options="required:true,validType:'equals[\'#pwd\']'" />
+								</td>
+							</tr>
+							<tr>
+								<th>英文</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'english'" />
+								</td>
+								<th>中文</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'chinese'" />
+								</td>
+							</tr>
+							<tr>
+								<th>两位小数</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'decimal'" />
+								</td>
+								<th>三位小数</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'decimalthree'" />
+								</td>
+							</tr>
+							<tr>
+								<th>整数</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'integer'" />
+								</td>
+								<th>邮编</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'zip'" />
+								</td>
+							</tr>
+							<tr>
+								<th>传真</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'faxno'" />
+								</td>
+								<th>电话</th>
+								<td>
+									<input class="easyui-validatebox inputNormal" data-options="validType:'phone'" />
+								</td>
+							</tr>
+							<tr>
+								<th>异步验证</th>
+								<td colspan="3">
+									<input class="easyui-validatebox inputFit" data-options="validType:'remote[\'/v1/api/common/check-comnm.json\']'" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div class="searchTilte">Source Code</div>
+					<table class="horizontalTable">
+						<caption>Source Code</caption>
+						<colgroup>
+							<col width="130" />
+							<col width="412" />
+							<col width="110" />
+							<col width="" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>日期早于2015.8.2</th>
+								<td>
+									&lt;input type="text" class="startDate validate[custom[date],past[2015/08/02]]" value="" readonly="readonly" /&gt;
+								</td>
+								<th>日期晚于今天</th>
+								<td>
+									&lt;input type="text" class="startDate validate[custom[date],future[now]]" value="" readonly="readonly" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>英文数字下划横杠</th>
+								<td>
+									&lt;input type="text" class='inputNormal validate[custom[name],ajax[ajaxRegisterCheck]]' value="" /&gt;
+								</td>
+								<th>验证url</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[url]]" value="http://sina.com" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>email</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[email]]" value="" /&gt;
+								</td>
+								<th>电话号码</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[phone]]" id="phone" value="" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>密码必填</th>
+								<td>
+									&lt;input type="password" class="inputNormal validate[required]" id="password" value="" /&gt;
+								</td>
+								<th>确认密码</th>
+								<td>
+									&lt;input type="password" class="inputNormal validate[required,equals[password]]" id="password2" value="" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>数字>=1</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[number],min[1]]" value="" /&gt;
+								</td>
+								<th>整数小于等于5</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[integer],max[5]]" value="" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>数字和空格</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[onlyNumberSp]]" value="" /&gt;
+								</td>
+								<th>英文和空格</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[onlyLetterSp]" value="" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>数字和英文</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[onlyLetterNumber]" value="" /&gt;
+								</td>
+								<th>中文和空格</th>
+								<td>
+									&lt;input type="text" class="inputNormal validate[custom[chinese]]" value="" /&gt;
+								</td>
+							</tr>
+							<tr>
+								<th>最多最少输入</th>
+								<td colspan="3">
+									&lt;textarea class="textareaFit validate[minSize[5],maxSize[300]]"&gt;
+细节 1:  2014年7月23日, 注册ID 
+细节 2:  2015年8月15日, 修改信息&lt;/textarea&gt;
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+<title></title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="author" content="Double" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="/lib/js/includeHead.js"></script>
+<script type="text/javascript" src="elements.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="defaultbox"></div>
+			<div class="menuWrapper">
+				<div class="menuCnm">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="subMenuWrapper">
+				<div class="subMenu"></div>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="leftMenuWrapper">
+				<div class="leftTitle"></div>
+				<div class="leftMenu">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="acticle">
+				<div class="location">
+					<p>
+						<a><img src="/lib/img/ico/ico_home.png" alt="home" /></a>
+						<span><img src="/lib/img/ico/ico_navi.png" alt="&gt;" /></span>
+						<span>表单</span>
+						<span><img src="/lib/img/ico/ico_navi.png" alt="&gt;" /></span>
+						<span class="fontS">表单元素</span>
+					</p>
+				</div>
+				<p class="acticleTitle"></p>
+				<div class="searchTilte">表单元素</div>
+				<div class="searchBtns">
+					<button class="btnPrimary btnEdit">编辑</button>
+					<button class="btnPrimary btnCancel">取消</button>
+				</div>
+				<form>
+					<table class="horizontalTable">
+						<caption>表单元素</caption>
+						<colgroup>
+							<col width="120" />
+							<col width="412" />
+							<col width="120" />
+							<col width="" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>startDate</th>
+								<td>
+									<input type="text" class="startDate" id="startDate1" value="" readonly="readonly" />
+								</td>
+								<th>startDate-endDate</th>
+								<td>
+									<input type="text" class="startDate" id="startDate2" value="" readonly="readonly" />-
+									<input type="text" class="endDate" id="endDate2" value="" readonly="readonly" />
+								</td>
+							</tr>
+							<tr>
+								<th>年月视图</th>
+								<td colspan="3">
+									<input type="text" class="startDate" id="startDate3" value="" readonly="readonly" />-
+									<input type="text" class="endDate" id="endDate3" value="" readonly="readonly" />
+									有BUG，哎~，以后有时间了再来改
+								</td>
+							</tr>
+							<tr>
+								<th>selectSmall</th>
+								<td>
+									<select class="selectSmall">
+										<option value="M">男</option>
+										<option value="F">女</option>
+									</select>
+								</td>
+								<th>inputSmall</th>
+								<td>
+									<input type="text" class="inputSmall" value="" />
+								</td>
+							</tr>
+							<tr>
+								<th>selectNormal</th>
+								<td>
+									<select class="selectNormal">
+										<option value="M">男</option>
+										<option value="F">女</option>
+									</select>
+								</td>
+								<th>inputNormal<span>*</span></th>
+								<td>
+									<input type="text" class="inputNormal" value="" />
+								</td>
+							</tr>
+							<tr>
+								<th>selectMiddle</th>
+								<td>
+									<select class="selectMiddle">
+										<option value="M">男</option>
+										<option value="F">女</option>
+									</select>
+								</td>
+								<th>inputMiddle</th>
+								<td>
+									<input type="text" class="inputMiddle" value="" />
+								</td>
+							</tr>
+							<tr>
+								<th>inputFit</th>
+								<td colspan="3">
+									<input type="text" class="inputFit" value="" />
+								</td>
+							</tr>
+							<tr>
+								<th>textareaSmall</th>
+								<td>
+									<textarea class="textareaSmall"></textarea>
+								</td>
+								<th>textareaNormal</th>
+								<td>
+									<textarea class="textareaNormal"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th>textareaMiddle</th>
+								<td colspan="3">
+									<textarea class="textareaMiddle easyui-validatebox" data-options="required:true"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th>textareaFit</th>
+								<td colspan="3">
+									<textarea class="textareaFit">
+细节 1:  2014年7月23日, 注册ID 
+细节 2:  2015年8月15日, 修改信息</textarea>
+								</td>
+							</tr>
+							<tr>
+								<th>combox</th>
+								<td colspan="3">
+									<div class="combox">
+									  <input type="hidden" value="" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>combox 调宽</th>
+								<td colspan="3">
+									<div class="combox">
+									  <input type="hidden" value="汉字,English" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>suggest说明</th>
+								<td>
+									suggest实现输入框自动完成功能，请输入1、12、2等进行测试
+								</td>
+								<th>suggest</th>
+								<td>
+									<div class="suggest" data-options="required:true"></div>
+								</td>
+							</tr>
+							 <tr>
+								<th>suggestSmall</th>
+								<td>
+									数据类型：[{text:'t',value:'v'}]
+									<div class="suggest suggestSmall"></div>
+								</td>
+								<th>suggestMiddle</th>
+								<td>
+									<div class="suggest suggestMiddle"></div>
+								</td>
+							</tr> 
+						</tbody>
+					</table>
+				</form>
+				<div class="searchTilte">Source Code</div>
+				<div class="easyui-tabs">
+					<div title="html">
+						<table class="horizontalTable">
+							<caption>表单元素</caption>
+							<colgroup>
+								<col width="120" />
+								<col width="412" />
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>startDate</th>
+									<td>
+										&lt;input type="text" class="startDate" id="startDate1" value="" readonly="readonly" /&gt;
+									</td>
+									<th>startDate-endDate</th>
+									<td>
+										&lt;input type="text" class="startDate" id="startDate2" value="" readonly="readonly" /&gt;-
+										&lt;input type="text" class="endDate" id="endDate2" value="" readonly="readonly" /&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>年月视图</th>
+									<td colspan="3">
+										&lt;input type="text" class="startDate" id="startDate3" value="" readonly="readonly" /&gt;-
+										&lt;input type="text" class="endDate" id="endDate3" value="" readonly="readonly" /&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>selectSmall</th>
+									<td>
+										&lt;select class="selectSmall"&gt;
+											&lt;option value="M"&gt;男&lt;/option&gt;
+											&lt;option value="F"&gt;女&lt;/option&gt;
+										&lt;/select&gt;
+									</td>
+									<th>inputSmall</th>
+									<td>
+										&lt;input type="text" class="inputSmall" value="" /&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>selectNormal</th>
+									<td>
+										&lt;select class="selectNormal">
+											&lt;option value="M"&gt;男&lt;/option&gt;
+											&lt;option value="F"&gt;女&lt;/option&gt;
+										&lt;/select&gt;
+									</td>
+									<th>inputNormal<span>*</span></th>
+									<td>
+										&lt;input type="text" class="inputNormal" value="" /&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>selectMiddle</th>
+									<td>
+										&lt;select class="selectMiddle">
+											&lt;option value="M"&gt;男&lt;/option&gt;
+											&lt;option value="F"&gt;女&lt;/option&gt;
+										&lt;/select&gt;
+									</td>
+									<th>inputMiddle</th>
+									<td>
+										&lt;input type="text" class="inputMiddle" value="" /&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>textareaSmall</th>
+									<td>
+										&lt;textarea class="textareaSmall"&gt;&lt;/textarea&gt;
+									</td>
+									<th>textareaNormal</th>
+									<td>
+										&lt;textarea class="textareaNormal"&gt;&lt;/textarea&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>textareaMiddle</th>
+									<td colspan="3">
+										&lt;textarea class="textareaMiddle"&gt;&lt;/textarea&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>textareaFit</th>
+									<td colspan="3">
+										&lt;textarea class="textareaFit"&gt;
+		细节 1:  2014年7月23日, 注册ID 
+		细节 2:  2015年8月15日, 修改信息&lt;/textarea&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>combox</th>
+									<td colspan="3">
+										&lt;div class="combox"&gt;
+										  &lt;input type="hidden" value="汉字,English" /&gt;
+										&lt;/div&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>combox 调宽</th>
+									<td colspan="3">
+										&lt;div class="combox"&gt;
+										  &lt;input type="hidden" value="汉字,English" /&gt;
+										&lt;/div&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>suggest数据</th>
+									<td>
+										1. ['你好么123','我很好234445','这里是122','哪里是1111111']<br/>
+										2. [{text:'选项1',value:'a'},{text:'选项2',value:'b'}]
+									</td>
+									<th>suggest</th>
+									<td>
+										&lt;div class="suggest" name="suggest"&gt;&lt;/div&gt;
+									</td>
+								</tr>
+								<tr>
+									<th>suggestSmall</th>
+									<td>
+										&lt;div class="suggest suggestSmall" name="suggest"&gt;&lt;/div&gt;
+									</td>
+									<th>suggestMiddle</th>
+									<td>
+										&lt;div class="suggest suggestMiddle" name="suggest"&gt;&lt;/div&gt;
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+			        <div title="javascript">
+			        	<pre class="sourceCode">
+'use strict';
+
+$(function() {
+	//模拟赋值--datepicker, 实际赋值时根据具体情况
+	//默认值:
+	//	startDate:七天前
+	//	endDate:今天
+	var today = new Date();
+	$('.endDate').val(formatDate(today));
+	today.setMonth(today.getMonth() - 6);
+	$('.startDate').val(formatDate(today));
+	
+	//创建jQueryUI datepicker 日历控件
+	//普通视图
+	$('#startDate1, #startDate2, #endDate2').datepickerJQueryUI();
+	//年月视图
+	$('#startDate3, #endDate3').datepickerJQueryUI({yearMonthView: true});
+	
+	//创建BUI combox
+	var itemsCombox = ['汉字','汉字 短语','English','number 5'];
+	var combox = $('.combox:eq(0)').comboxBui(itemsCombox);
+	
+	combox对象自定义的方法
+	1.setItems
+	自定义combox setItems方法，数据源可为一维数组、字符串形式的一维数组、一维Map数组、字符串形式的一维Map数组
+	combox.setItems('[{\"a\":\"v1\"}]');
+	2.setSelection
+	combox.setSelection('v1,v2');
+
+	//创建自定义宽度的combox
+	$('.combox:eq(1)').comboxBui(itemsCombox, 324);
+	
+	//创建BUI自动完成插件suggest
+	var itemsSuggest = ['你好么123','我很好234445','这里是122','哪里是1111111'];
+	$('.suggest:eq(0), .suggest:eq(2)').suggestBui(itemsSuggest);
+	itemsSuggest = [{text:'选项1',value:'a'},{text:'选项2',value:'b'},{text:'选项3',value:'c'}];
+	var sug = $('.suggest:eq(1)').suggestBui(itemsSuggest);
+	sug.on('change', function(ev){
+     	 console.info(ev.item);
+   	});
+   
+});
+			        	</pre>
+		        	</div>
+		        </div>
+				<div class="searchTilte">按钮</div>
+				<table class="horizontalTable">
+					<caption>按钮</caption>
+					<colgroup>
+						<col width="120" />
+						<col width="412" />
+						<col width="120" />
+						<col width="" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>btnPrimary</th>
+							<td>
+								<button class="btnPrimary">按钮</button>
+							</td>
+							<th>btnDefault</th>
+							<td>
+								<button class="btnDefault">按钮</button>
+							</td>
+						</tr>
+						<tr>
+							<th>btnSmall</th>
+							<td>
+								<button class="btnPrimary btnSmall">按钮</button>
+								<button class="btnDefault btnSmall">按钮</button>
+							</td>
+							<th rowspan="2">btnDisabled</th>
+							<td>
+								<button class="btnPrimary btnDisabled">按钮</button>
+								<button class="btnDefault btnDisabled">按钮</button>
+								<button class="btnPrimary btnSmall btnDisabled">按钮</button>
+								<button class="btnDefault btnSmall btnDisabled">按钮</button>
+							</td>
+						</tr>
+						<tr>
+							<th>btnSquare</th>
+							<td>
+								<button class="btnPrimary btnSquare">按钮</button>
+								<button class="btnDefault btnSquare">按钮</button>
+							</td>
+							<td>
+								<button class="btnPrimary btnSquare btnDisabled">按钮</button>
+								<button class="btnDefault btnSquare btnDisabled">按钮</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<table class="horizontalTable">
+					<caption>按钮</caption>
+					<colgroup>
+						<col width="120" />
+						<col width="412" />
+						<col width="120" />
+						<col width="" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>btnPrimary</th>
+							<td>
+								&lt;button class="btnPrimary"&gt;按钮&lt;/button&gt;
+							</td>
+							<th>btnDefault</th>
+							<td>
+								&lt;button class="btnDefault"&gt;按钮&lt;/button&gt;
+							</td>
+						</tr>
+						<tr>
+							<th>btnSmall</th>
+							<td>
+								&lt;button class="btnPrimary btnSmall"&gt;按钮&lt;/button&gt;
+								&lt;button class="btnDefault btnSmall"&gt;按钮&lt;/button&gt;
+							</td>
+							<th rowspan="2">btnDisabled</th>
+							<td>
+								&lt;button class="btnPrimary btnDisabled"&gt;按钮&lt;/button&gt;
+								&lt;button class="btnDefault btnDisabled"&gt;按钮&lt;/button&gt;
+								&lt;button class="btnPrimary btnSmall btnDisabled"&gt;按钮&lt;/button&gt;
+								&lt;button class="btnDefault btnSmall btnDisabled"&gt;按钮&lt;/button&gt;
+							</td>
+						</tr>
+						<tr>
+							<th>btnSquare</th>
+							<td>
+								&lt;button class="btnPrimary btnSquare"&gt;按钮&lt;/button&gt;
+								&lt;button class="btnDefault btnSquare"&gt;按钮&lt;/button&gt;
+							</td>
+							<td>
+								&lt;button class="btnPrimary btnSquare btnDisabled"&gt;按钮&lt;/button&gt;
+								&lt;button class="btnDefault btnSquare btnDisabled"&gt;按钮&lt;/button&gt;
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="searchTilte">垂直表格</div>
+				<table class="verticalTable">
+					<caption>垂直表格</caption>
+					<colgroup>
+						<col width="266" />
+						<col width="266" />
+						<col width="266" />
+						<col width="" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>text</th>
+							<th>startDate</th>
+							<th>selectNormal</th>
+							<th>inputNormal<span>*</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>I'm one piece of pure text.</td>
+							<td>
+								<input type="text" class="startDate" name="birthday" value="" readonly="readonly" />
+							</td>
+							<td>
+								<select class="selectNormal" name="gender">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+							<td>
+								<input type="text" class="inputNormal" name="tel" value="" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="searchTilte">Source Code</div>
+				<table class="verticalTable">
+					<caption>垂直表格</caption>
+					<tbody>
+						<tr>
+							<td><pre class="sourceCode">&lt;table class="verticalTable"&gt;
+	&lt;caption&gt;垂直表格&lt;/caption&gt;
+	&lt;colgroup&gt;
+		&lt;col width="266" /&gt;
+		&lt;col width="266" /&gt;
+		&lt;col width="266" /&gt;
+		&lt;col width="" /&gt;
+	&lt;/colgroup&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;text&lt;/th&gt;
+			&lt;th&gt;startDate&lt;/th&gt;
+			&lt;th&gt;selectNormal&lt;/th&gt;
+			&lt;th&gt;inputNormal&lt;span&gt;*&lt;/span&gt;&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;I'm one piece of pure text.&lt;/td&gt;
+			&lt;td&gt;
+				&lt;input type="text" class="startDate" name="birthday" value="" readonly="readonly" /&gt;
+			&lt;/td&gt;
+			&lt;td&gt;
+				&lt;select class="selectNormal" name="gender"&gt;
+					&lt;option value="M"&gt;男&lt;/option&gt;
+					&lt;option value="F"&gt;女&lt;/option&gt;
+				&lt;/select&gt;
+			&lt;/td&gt;
+			&lt;td&gt;
+				&lt;input type="text" class="inputNormal" name="tel" value="" /&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</pre></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="banner">标题</div>
+					<table class="bannerTable">
+						<caption>表单元素</caption>
+						<colgroup>
+							<col width="120" />
+							<col width="412" />
+							<col width="120" />
+							<col width="" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>selectSmall</th>
+								<td>
+									<select class="selectSmall">
+										<option value="M">男</option>
+										<option value="F">女</option>
+									</select>
+								</td>
+								<th>inputSmall</th>
+								<td>
+									<input type="text" class="inputSmall" value="" />
+								</td>
+							</tr>
+							<tr>
+								<th>selectNormal</th>
+								<td>
+									<select class="selectNormal">
+										<option value="M">男</option>
+										<option value="F">女</option>
+									</select>
+								</td>
+								<th>inputNormal<span>*</span></th>
+								<td>
+									<input type="text" class="inputNormal" value="" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

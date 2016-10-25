@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+<title></title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="author" content="Double" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="/lib/js/includeHead.js"></script>
+<link rel="stylesheet" href="/lib/plugin/fullcalendar-2.5.0-beta2/fullcalendar.min.css" />
+<!-- <link rel="stylesheet" href="/lib/plugin/fullcalendar-2.5.0-beta2/fullcalendar.print.css" /> -->
+<link rel="stylesheet" href="/lib/plugin/fullcalendar-2.5.0-beta2/scheduler.min.css" />
+<script src="/lib/plugin/fullcalendar-2.5.0-beta2/lib/moment.min.js"></script>
+<script src="/lib/plugin/fullcalendar-2.5.0-beta2/fullcalendar.min.js"></script>
+<!-- <script src="/lib/plugin/fullcalendar-2.5.0-beta2/scheduler.min.js"></script> -->
+<script src="/lib/plugin/fullcalendar-2.5.0-beta2/lang/zh-cn.js"></script>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	margin: 50px auto;
+}
+
+.popup-dialog {
+	padding: 10px;
+	position: absolute;
+	background: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	z-index: 1;
+	display: none;
+}
+
+.popup-dialog .popup-button, .popup-dialog .popup-close {
+	width: 100%;
+	text-align: right;
+}
+
+.popup-dialog .popup-close a {
+	font-size: 12px;
+	font-weight: bold;
+	color: #C4C4C4;
+	cursor: pointer;
+}
+
+.popup-dialog .popup-close a:hover {
+	color: #666;
+}
+</style>
+<script>
+	var eventDate, updateEvent, events = localStorage.events;
+	events = events ? $.parseJSON(events) : [];
+
+	$(function() {
+
+		$('#calendar').fullCalendar(
+				{
+					header : {
+						left : 'prev,next today',
+						center : 'title',
+						right : 'month,agendaWeek,agendaDay'
+					},
+					businessHours : true, // display business hours
+					editable : true,
+					events : events,
+					dayClick : function(date, jsEvent, view) {
+						$('#addBtn').show();
+						$('#updateBtn').hide();
+						$('#removeBtn').hide();
+						$('#event-dialog form')[0].reset();
+						$('#event-dialog').show();
+						$('#event-dialog').offset({
+							left : jsEvent.pageX,
+							top : jsEvent.pageY
+						});
+						$('#event-dialog input[name="event-title"]').focus();
+						eventDate = date;
+					},
+					eventClick : function(event, element) {
+						$('#addBtn').hide();
+						$('#updateBtn').show();
+						$('#removeBtn').show();
+						$('#event-dialog form')[0].reset();
+						$('#event-dialog').show();
+						$('#event-dialog').offset({
+							left : element.pageX,
+							top : element.pageY
+						});
+						if (event.color == 'orange') {
+							$('#event-dialog select[name="event-type"]').val(
+									'important');
+						}
+						$('#event-dialog input[name="event-title"]').val(
+								event.title);
+						$('#event-dialog input[name="event-title"]').focus();
+						updateEvent = event;
+					},
+					eventDrop : function(event, delta, revertFunc, jsEvent, ui,
+							view) {
+						updateEvents(event, 'update');
+					},
+					eventResize : function(event, delta, revertFunc, jsEvent,
+							ui, view) {
+						updateEvents(event, 'update');
+					}
+				});
+
+		//点击浮窗关闭按钮
+		$('.popup-dialog .popup-close a').click(function() {
+			$(this).parents('.popup-dialog').hide();
+		});
+	});
+
+	//新增一个事件
+	function renderEventFun() {
+		var eventTitle = $('#event-dialog input[name="event-title"]').val()
+				.replace(/(^\s*)|(\s*$)/g, '');
+		if (eventTitle) {
+			var color = '';
+			if ($('#event-dialog select[name="event-type"]').val() === 'important') {
+				color = 'orange';
+			}
+			var newEvent = {
+				id : 'event' + new Date().getTime(),
+				title : eventTitle,
+				start : eventDate.format(),
+				color : color
+			};
+			$('#calendar').fullCalendar('renderEvent', newEvent);
+			$('#event-dialog').hide();
+			updateEvents(newEvent, 'add');
+		}
+	}
+	//更新事件
+	function updateEventFun() {
+		var eventTitle = $('#event-dialog input[name="event-title"]').val()
+				.replace(/(^\s*)|(\s*$)/g, '');
+		if (eventTitle != updateEvent.title) {
+			updateEvent.title = eventTitle;
+		}
+		var eventType = $('#event-dialog select[name="event-type"]').val();
+		if (eventType === 'important' && updateEvent.color != 'orange') {
+			updateEvent.color = 'orange';
+		} else if (eventType === 'general' && updateEvent.color != '') {
+			updateEvent.color = '';
+		}
+		$('#calendar').fullCalendar('updateEvent', updateEvent);
+		$('#event-dialog').hide();
+		updateEvents(updateEvent, 'update');
+	}
+	//移除事件
+	function removeEventFun() {
+		$('#calendar').fullCalendar('removeEvents', function(ev) {
+			return ev === updateEvent;
+		});
+		$('#event-dialog').hide();
+		updateEvents(updateEvent, 'remove');
+	}
+	//更新事件列表
+	function updateEvents(event, updateType) {
+		switch (updateType) {
+		case 'add':
+			events.push(event);
+			break;
+		case 'update':
+			for (var i = 0; i < events.length; i++) {
+				if (event.id == events[i].id) {
+					events[i].title = event.title;
+					events[i].color = event.color;
+					events[i].start = event.start.format();
+					if (event.end) {
+						events[i].end = event.end.format();
+					}
+					break;
+				}
+			}
+			break;
+		case 'remove':
+			for (var i = 0; i < events.length; i++) {
+				if (event.id == events[i].id) {
+					events.splice(i, 1);
+					break;
+				}
+			}
+			break;
+		}
+		localStorage.events = JSON.stringify(events);
+	}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="defaultbox"></div>
+			<div class="menuWrapper">
+				<div class="menuCnm">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="subMenuWrapper">
+				<div class="subMenu"></div>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="leftMenuWrapper">
+				<div class="leftTitle"></div>
+				<div class="leftMenu">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="acticle">
+				<div class="location">
+					<p>
+						<a class="home-logo">&nbsp;</a>
+						<span>工具类</span> 
+						<span class="fontS" pageName>日程安排</span>
+					</p>
+				</div>
+				<p class="acticleTitle"></p>
+				<div id="calendar"></div>
+				<div class="popup-dialog" id="event-dialog">
+					<div class="popup-close">
+						<a>&#10006;</a>
+					</div>
+					<form>
+						<p>
+							<select name="event-type">
+								<option value="general">一般</option>
+								<option value="important">重要</option>
+							</select> <input type="text" name="event-title" value="" />
+						</p>
+					</form>
+					<div class="popup-button">
+						<button id="addBtn" onclick="renderEventFun()">确认</button>
+						<button id="updateBtn" onclick="updateEventFun()">修改</button>
+						<button id="removeBtn" onclick="removeEventFun()">删除</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
