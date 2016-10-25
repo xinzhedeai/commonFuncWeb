@@ -98,4 +98,4 @@ $.ajaxSetup({
 });
 
 $('#' + listNumber + '-receiver').hide();//拼串选择器
-
+$("#form-add").form('clear');//easyui清楚表单方法

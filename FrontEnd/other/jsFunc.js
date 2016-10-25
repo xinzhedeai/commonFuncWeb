@@ -568,3 +568,13 @@ function getTopWinow() {
 	}
 	return p;
 }
+
+setTimeout('resizeDatagrid()', 300);
+
+/**
+ * 当页面加载完之后需要调用的函数
+ * @desc 详细介绍：http://www.jb51.net/article/32832.htm
+ */
+window.addEventListener('load', function(event) {
+	//处理逻辑
+});
