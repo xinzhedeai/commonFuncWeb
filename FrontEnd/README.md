@@ -9,3 +9,7 @@
 ## jquery-migrate-1.1.0.js 当开发者需要在代码中使用新版本的jQuery时，可以在1.9或2.0版本中使用该插件来检测哪些功能已经弃用或移除，并可以在必要时恢复这些功能。
 ## jquery.mousewheel.js 用于添加跨浏览器的鼠标滚轮支持
 ## jquery.form.js  实现完美的表单异步提交，即使是表单元素名称复杂，也可以很好的传递到后台。
+## Magnific Popup 是一款免费的响应式 jQuery Lightbox 插件 
+####详情查看http://www.cnblogs.com/lhb25/archive/2013/05/14/responsive-jquery-lightbox-plugin-for-free.html
+## modernizr.custom.js制作20种html5 CSS3绚丽的弹出窗口动画过渡效果
+#### http://www.17sucai.com/pins/3257.html 需要积分的
