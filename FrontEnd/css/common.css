@@ -5,6 +5,7 @@ font: 12px Times New Roman;
 font-family:Microsoft Yahei
 font-family:"黑体";
 font-family: Arial;
+font-family: "mincho" !important;
 font: 12px "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
 font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 text-decoration:underline;/*去掉超链接下划线*/
@@ -38,3 +39,4 @@ letter-spacing: -2px;/*字体间距*/
 margin：0 auto;/*父容器的子元素水平居中*/
 element:hover {top：-1px;}/*悬浮在按钮上，里面的文字向上动*/
 input:focus{}而不是input :focus{}
+textarea{resize: none; width: 100%; overflow: auto;}/*文本框大小不变*/
