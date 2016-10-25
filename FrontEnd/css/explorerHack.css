@@ -3,4 +3,5 @@
    .btnPrimary {padding: 3px 12px;}
    .btnSmall{padding: 2px 5px;}
 }
-
+/* ie8下，滤镜透明不好用，需要用下面这种方法设置样式--黑色半透明 */
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);

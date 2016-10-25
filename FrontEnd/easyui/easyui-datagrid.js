@@ -510,11 +510,30 @@ $.extend($.fn.validatebox.defaults.rules, {
 		},
 		message: '请输入正确传真号'
 	}, 
+	emails: {
+		validator: function(value) {
+			return  /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(value);
+		},
+		message: '请输入有效的电子邮箱地址'
+	},
 	phone: {
 		validator: function(value) {
 			return  /^(?!-)[0-9\-]{5,20}$/.test(value);
 		},
 		message: '请输入正确电话号'
+	},
+	phoneL: {
+		validator: function(value) {
+			var lstr=value.replace(/-/g,"");
+			return  /^1[34578]\d{9}$/.test(lstr);
+		},
+		message: '请输入正确手机号'
+	},
+	phoneN: {
+		validator: function(value) {
+			return  /^(13|15|18)\d{9}$/i.test(value);
+		},
+		message: '请输入正确手机号'
 	},
 	int_four: {
 		validator: function(value) {
@@ -558,13 +577,100 @@ $.extend($.fn.validatebox.defaults.rules, {
 	          return value.length >= param[0];     
 	      },     
 	      message: '请输入最小{0}位字符.'    
-	  }     
+	  },
+	  chinen : {// 匹配中文，英文字母和数字及_ 
+	        validator : function(value) { 
+	            return /^[\u4e00-\u9fa50-9A-Za-z,，；_ ~ ( ) - - ！。\.;\:"'!]+$/.test(value); 
+	        }, 
+	        message : '含有非法字符' 
+	    },
+    isBankCard: {//允许输入16或19位
+    	validator : function(value) { 
+            return /^\d{4}(?:\s\d{4}){4}$/.test(value + "1") || /^\d{4}(?:\s\d{4}){3}$/.test(value); 
+        }, 
+        message : '请输入正确格式的银行卡号'
+    	
+    },
+    isRightUrl: { 
+    	validator : function(value) { 
+            return /^(http(s)?:\/\/)?(www\.)?[\w-]+\.\w{2,4}(\/)?$/.test(value); 
+        }, 
+        message : '请输入正确的网址'
+    },
+    isInt: { 
+    	validator : function(value) { 
+            return /^-?[0-9]/.test(value); 
+        }, 
+        message : '只能输入整数'
+    }
+});
+
+//扩展datagrid的行号自适应
+$.extend($.fn.datagrid.methods, {
+	fixRownumber: function(jq) {
+		return jq.each(function() {
+			var panel = $(this).datagrid("getPanel");
+			//获取最后一行的number容器,并拷贝一份
+			var clone = $(".datagrid-cell-rownumber", panel).last().clone();
+			//由于在某些浏览器里面,是不支持获取隐藏元素的宽度,所以取巧一下
+			clone.css({
+				"position": "absolute",
+				left: -1000
+			}).appendTo("body");
+			//更改宽度后对容器进行重新计算
+			$(this).datagrid("resize");
+			var width = clone.width("auto").width();
+			//默认宽度是25,所以只有大于25的时候才进行fix
+			if (width > 25) {
+				//多加5个像素,保持一点边距
+				$(".datagrid-header-rownumber,.datagrid-cell-rownumber", panel).width(width + 5);
+				//修改了宽度之后,需要对容器进行重新计算,所以调用resize
+				$(this).datagrid("resize");
+				//一些清理工作
+				clone.remove();
+				clone = null;
+			} else {
+				//还原成默认状态
+				$(".datagrid-header-rownumber,.datagrid-cell-rownumber", panel).removeAttr("style");
+			}
+		});
+	}
+});
+/**
+ *  起始日期与结束日期进行大小的判断(待测试)
+ */
+$.extend($.fn.validatebox.defaults.rules, {
+	endTimeToStartTime: {
+		validator: function(value, param) {
+			if (value != null && value != "") {
+				startTime2 = $(param[0]).datetimebox('getValue');
+				var d1 = $.fn.datebox.defaults.parser(startTime2);
+				var d2 = $.fn.datebox.defaults.parser(value);
+				varify = d2 >= d1;
+				return varify;
+			}
+			return true;
+		},
+		message: '終了時間を開始時間の前にしてください！'
+	},
+	startTimeToEndTime: {
+		validator: function(value, param) {
+			if (value != null && value != "") {
+				endTime2 = $(param[0]).datetimebox('getValue');
+				var d1 = $.fn.datebox.defaults.parser(endTime2);
+				var d2 = $.fn.datebox.defaults.parser(value);
+				varify = d2 <= d1;
+				return varify;
+			}
+			return true;
+		},
+		message: '終了時間を開始時間の前にしてください！'
+	}
 });
 
 /**
  * @functionName: hideAllValidation
  * @Description: 隐藏easyui的所有验证红框
- * @author: Double
  */
 jQuery.fn.hideAllValidation = function() {
 	$(this).find('.validatebox-invalid').removeClass('validatebox-invalid').end().find('.textbox-invalid').removeClass('textbox-invalid');

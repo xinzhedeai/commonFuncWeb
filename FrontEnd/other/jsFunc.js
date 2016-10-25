@@ -15,7 +15,6 @@ function clearAllCookie() {
         }*/
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"  
     }  
-      
 }
 //
 /**
@@ -507,4 +506,65 @@ function fillWindow() {
 	if (height >= 570) {
 		$('.main-body').css('min-height', height);
 	}
+}
+/***
+ * 获取url中"?"符后的字串
+ */
+function getRequest() {
+	var url = location.search; 
+	var theRequest = new Object();
+	if (url.indexOf("?") != -1) {
+	   var str = url.substr(1);
+	   strs = str.split("&");
+	   for(var i = 0; i < strs.length; i ++) {
+	      theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+	   }
+	}
+	return theRequest;
+}
+
+/* 取URL参数的函数 */
+function request(paras) {
+	var url = decodeURI(location.href);
+	var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+	var paraObj = {};
+	for (var i = 0; j = paraString[i]; i++) {
+		paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+	}
+	var returnValue = paraObj[paras.toLowerCase()];
+	if (typeof(returnValue) == "undefined") {
+		return "";
+	} else {
+		return returnValue;
+	}
+}
+/**
+ * 
+ * @param flag 显示时间类型
+ * @desc 显示日期
+ * @returns
+ */
+function cutTime(flag){
+	var time;
+	var nowTime=$("#changeTime").val();
+	if(flag == "DAY"){
+		time=nowTime;
+	}else if(flag == "MONTH"){
+		time=nowTime.substring(0,7);
+	}else{
+		time=nowTime.substring(0,4);
+	}
+	return time;
+}
+
+/** 
+ * 在页面中任何嵌套层次的窗口中获取顶层窗口 
+ * @return 当前页面的顶层窗口对象 
+ */
+function getTopWinow() {
+	var p = window;
+	while (p != p.parent) {
+		p = p.parent;
+	}
+	return p;
 }
