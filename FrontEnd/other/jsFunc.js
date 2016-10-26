@@ -345,6 +345,125 @@ function exportFileByForm(url, params, button) {
     }
     form.submit();
 }
+
+/**
+ * @functionName: downloadByForm
+ * @Description: form表单下载文件
+ * @param: option {
+ * 			url, 
+ * 			param, 
+ * 			button, 
+ * 			callback: 选填, 是否有回调函数, 值 true|false
+ * 			success: 选填, 回调函数, 值 function
+ * 		}
+ * @desc  调用方法：
+ * 		var field = ["waybill_no"], queryParam = {};
+		//queryParam.operate_type = '01';//配合条件操作
+		var rows = $($productClassify.datagridDelivery).datagrid("getChecked");
+		if (rows) {
+			var ids = [];
+			ids.push(rows[0][field[0]]);
+			//将选中行的id都赋值给params
+			queryParam.params = JSON.stringify(ids);
+			downloadByForm({url : '/v1/api/productReg/export/export-waybillno.excel', param : queryParam, button : this, callback : true, success : function() {
+				//下载文件成功后回调函数
+			}});
+		}
+ */
+function downloadByForm() {
+	if (arguments.length === 1) {
+		var option = arguments[0], url = option.url, param = option.param, button = option.button, orgText = $(button).text();
+//		var url = arguments[0], param = arguments[1], button = arguments[2], orgText = $(button).text();
+		$(button).addClass('btnDisabled');
+		$(button).attr('disabled', true);
+		if (!(typeof button === 'string')) {
+			button = '#' + button.id;
+		}
+			
+		if (option.callback) {
+	    	param.process_id = makeStamp(new Date());
+	  } else {
+		  if (!$(button).hasClass('btnImg')) {
+			  $(button).text('下载中...');
+			  setTimeout("$('" + button + "').text('" + orgText + "'); $('" + button + "').removeClass('btnDisabled'); $('" + button + "').attr('disabled', false);", 2000);
+		  } else {
+			  var buttonHoverTitle = $(button).parent().next();
+			  buttonHoverTitle.html('<p style="left: ' + ($(button).offset().left - buttonHoverTitle.offset().left - 2) + 'px;">下载中...</p>');
+			  setTimeout(function() {
+				  $(button).parent().next().html('');
+				  $(button).removeClass('btnDisabled'); 
+				  $(button).attr('disabled', false);
+			  }, 2000);
+		  }
+	  }
+		 
+		var form = $('<form>');
+	    form.attr('style', 'display:none');
+	    form.attr('target', 'downloadFrame');
+	    form.attr('method', 'post');
+	    form.attr('action', contextPath + url);
+//	    form.attr('id', 'form');
+	    
+	    $('body').append(form);
+	    for (var x in param) {
+	    	var input = $('<input>'); 
+	        input.attr('type', 'hidden'); 
+	        input.attr('name', x); 
+	        input.attr('value', param[x]); 
+	        form.append(input);
+	    }
+	    form.submit();
+	    if (option.callback) {
+	    	 if (!$(button).hasClass('btnImg')) {
+	    		 $(button).text('处理中...');
+			 } else {
+				 var buttonHoverTitle = $(button).parent().next();
+				 buttonHoverTitle.html('<p style="left: ' + ($(button).offset().left - buttonHoverTitle.offset().left - 2) + 'px;">处理中...</p>');
+			 }
+	    	setTimeout(function() {
+	    		var getProcessStatusCount = 0,
+	    		getProcessStatusInterval = setInterval(function() {
+		    		$.post(contextPath + '/v1/api/common/get-process-status.json', {process_id : param.process_id}, function(res) {
+			    		if (res.errCd === 0) {
+			    			var result = res.result;
+			    			if (result) {
+			    				if (result.success) {
+			    					if (!$(button).hasClass('btnImg')) {
+			    			    		 $(button).text('下载中...');
+			    			    		 setTimeout("$('" + button + "').text('" + orgText + "'); $('" + button + "').removeClass('btnDisabled'); $('" + button + "').attr('disabled', false);", 2000);
+			    					} else {
+			    						var buttonHoverTitle = $(button).parent().next();
+			    						 buttonHoverTitle.html('<p style="left: ' + ($(button).offset().left - buttonHoverTitle.offset().left - 2) + 'px;">下载中...</p>');
+			    						 setTimeout(function() {
+			    							  $(button).parent().next().html('');
+			    							  $(button).removeClass('btnDisabled'); 
+			    							  $(button).attr('disabled', false);
+			    						  }, 2000);
+			    					}
+									if (option.success instanceof Function) {
+										option.success();
+									}
+									clearInterval(getProcessStatusInterval);
+			    				} else {
+			    					if (getProcessStatusCount === 149) {
+			    						clearInterval(getProcessStatusInterval);
+			    					} else {
+			    						getProcessStatusCount += 1;
+			    					}
+			    				}
+			    			}
+			    		} else {
+			    			$alert(res.errMsg);
+			    		}
+			    	});
+	    		}, 2000);
+	    	}, 500);
+	  	}
+	} else {
+		alert('downloadByForm : 参数错误, 支持1个参数(option{url, param, button, callback-选填, success-选填})');
+	}
+}
+
 /**
  * 
  * @functionName: formatDate
@@ -538,6 +657,38 @@ function request(paras) {
 		return returnValue;
 	}
 }
+
+/**
+ * 
+ * @functionName: myRequest
+ * @Description: 所有请求可以使用的通用方法
+ * @param: paramObj, url
+ */
+function myRequest(paramObj, url){
+	var result = '';
+ 	$.ajax({
+	 	type : 'post',
+	 	url : contextPath + url,
+	 	data : paramObj,
+	 	async : false,
+	 	cache : false,
+	 	dataType : 'json',
+	 	success : function(data) {
+	 		if (data.errCd === 0) {
+	 			if (data.result) {
+	 				result = data.result;
+	 			}
+	 		} else {
+	 			alert(data.errMsg);
+	 		}
+	 	},
+	 	error : function(){
+	 		alert('发生错误');
+	 	}
+ 	});
+	return result;
+}
+
 /**
  * 
  * @param flag 显示时间类型
@@ -578,3 +729,50 @@ setTimeout('resizeDatagrid()', 300);
 window.addEventListener('load', function(event) {
 	//处理逻辑
 });
+
+//处理键盘事件
+//禁止后退键（Backspace）密码或单行、多行文本框除外
+function banKeyEvent(e) {
+	var ev = e || window.event;// 获取event对象
+	var obj = ev.target || ev.srcElement;// 获取事件源
+	var t = obj.type || obj.getAttribute('type');// 获取事件源类型
+ 
+ // 获取作为判断条件的事件类型
+ var vReadOnly = obj.getAttribute('readonly');
+ var vEnabled = obj.getAttribute('enabled');
+ // 处理null值情况
+ var userAgent = navigator.userAgent.toLowerCase();
+ var rMsie = /(msie\s|trident.*rv:)([\w.]+)/;
+ var match = rMsie.exec(userAgent);  
+ if (match !== null) {
+  	if(parseInt(match[2]) === 8) //IE 8.0 
+  		vReadOnly = (vReadOnly === '') ? null : vReadOnly;
+ }
+ vReadOnly = (vReadOnly === null) ? false : true;
+ vEnabled = (vEnabled === null) ? true : vEnabled;
+ 
+ // 当敲Backspace键时，事件源类型为密码或单行、多行文本的，
+ // 并且readonly属性为true或enabled属性为false的，则退格键失效
+ var flag1 = (ev.keyCode === 8 && (t === 'password' || t === 'text' || t === 'textarea') && (vReadOnly === true || vEnabled !== true)) ? true : false;
+
+ // 当敲Backspace键时，事件源类型非密码或单行、多行文本的，则退格键失效
+//var flag2 = (ev.keyCode === 8 && t !== 'password' && t !== 'text' && t !== 'textarea') ? true : false;
+ 
+ // 当敲Backspace键时，事件源类型非密码或单行、多行文本的，则退格键失效
+ var flag2 = (ev.keyCode === 8 && obj.tagName !== 'INPUT' && obj.tagName !== 'TEXTAREA') ? true : false;
+ 
+ // 判断
+ if (flag1) {
+     return false;
+ }
+ if (flag2) {
+     return false;
+ }
+ 
+}
+//禁止后退键
+//作用于Firefox、Opera
+document.onkeypress = banKeyEvent;
+//禁止后退键
+//作用于IE、Chrome
+document.onkeydown = banKeyEvent;

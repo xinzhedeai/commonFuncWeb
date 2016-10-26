@@ -245,7 +245,6 @@ jQuery.fn.datagridEasyUI = function() {
 /**
  * @functionName: downloadFileEasyUI
  * @Description: 自定义下载方法,datagrid下载或表单下载
- * @author: Double
  * @param: option {
  * 			url: 必填
  * 			field: 必填,datagrid主键列或表单主键域
@@ -254,6 +253,11 @@ jQuery.fn.datagridEasyUI = function() {
  * 			callback: 选填, 是否有回调函数, 值为true或false
  * 			success: 选填, 回调函数, 值 function
  * 		}
+ * @desc 下载easyui文件方法调用
+ * $('#dldBtn').click(function() { 
+ * 		$($gridDetail.datagrid).downloadFileEasyUI({url : '/v1/api/test/sample/exporter/samples.excel', field : ['id'], button : this});
+ * });
+ * 
  */
 jQuery.fn.downloadFileEasyUI = function() {
 	if (arguments.length === 1) {

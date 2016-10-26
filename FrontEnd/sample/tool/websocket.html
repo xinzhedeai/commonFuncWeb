@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+<title>sample</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="author" content="Double" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="/lib/js/includeHead.js"></script>
+<style type="text/css">
+.messages {
+	clear: both;
+	margin-top: 45px;
+	border: 1px solid #999;
+	background: #FFF;
+	height: 300px;
+	width: 98%;
+	border-radius: 5px;
+	box-shadow: 0 3px 10px 0 #999;
+	overflow: auto;
+	padding: 5px;
+	color: #C4C4C4;
+	font-size: 12px;
+}
+
+.open-msg, .close-msg {
+	color: #C4C4C4;
+	text-align: center;
+	clear: both;
+}
+
+.message {
+	clear: both;
+	font-size: 13px;
+}
+
+.message .content {
+	font-size: 15px;
+	color: #333;
+	padding: 5px 10px;
+	margin: 0;
+	clear: both;
+}
+
+.message-send .user {
+	color: #49d6ac;
+}
+
+.message-send, .message-send .user, .message-send .content {
+	float: right;
+}
+
+.message-receive .user {
+	color: #7050bf;
+}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="defaultbox"></div>
+			<div class="menuWrapper">
+				<div class="menuCnm">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="subMenuWrapper">
+				<div class="subMenu"></div>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="leftMenuWrapper">
+				<div class="leftTitle"></div>
+				<div class="leftMenu">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="acticle">
+				<div class="location">
+					<p>
+						<a class="home-logo">&nbsp;</a>
+						<span>工具类</span> 
+						<span class="fontS" pageName>WebSocket</span>
+					</p>
+				</div>
+				<p class="acticleTitle"></p>
+				<div class="searchTilte">简单即时通话功能</div>
+				<div class="searchBtns">
+					<button class="btnPrimary" onclick="openSocket()" durianApis="">创建链接</button>
+					<button class="btnPrimary" onclick="closeSocket()" durianApis="">关闭链接</button>
+				</div>
+				<!-- Server responses get written here -->
+				<div class="messages" id="messages"></div>
+				<textarea class="textareaFit" id="messageinput"
+					style="margin: 10px auto; height: 50px;" placeholder="输入发送内容"></textarea>
+				<select class="selectNormal" id="userId">
+					<option value="寂寞的仙人掌">寂寞的仙人掌</option>
+					<option value="等玫瑰的刺猬">等玫瑰的刺猬</option>
+					<option value="拱白菜的猪">拱白菜的猪</option>
+				</select>
+				<button class="btnPrimary" id="sendBtn" onclick="send();">发送</button>
+				<fieldset style="margin: 5px auto; font-size: 12px;">
+					<legend>简单说明：</legend>
+					简介：本模块实现了简单的即时通话功能。</br> 测试：可以通过打开不同的网页，或不同的浏览器进行模拟测试。 </br> 浏览器支持：chrome firefox
+					ie11 ie10
+				</fieldset>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var webSocket, 
+		messages = document.getElementById('messages');
+		
+		//创建链接
+		function openSocket() {
+			// 已经创建过链接
+			if (webSocket && webSocket.readyState !== WebSocket.CLOSED) {
+				writeResponse('<div class="open-msg">链接已经建立过啦::>_<::</div>');
+				return;
+			}
+			
+			//创建链接
+			webSocket = new WebSocket('ws://' + location.host + '/v1/api/test/sample/websocket');
+
+			/**
+			 * Binds functions to the listeners for the websocket.
+			 */
+			webSocket.onopen = function(event) {
+				// For reasons I can't determine, onopen gets called twice
+				// and the first time event.data is undefined.
+				// Leave a comment if you know the answer.
+				if (!event.data)
+					return;
+				writeResponse(event.data);
+			};
+			
+			webSocket.onmessage = function(event) {
+				writeResponse(event.data);
+			};
+
+			webSocket.onclose = function(event) {
+				writeResponse('<div class="close-msg">链接已经关闭啦(^。^)y-~~</div>');
+			};
+		}
+
+		//将消息发送到服务器
+		function send() {
+			if (webSocket && webSocket.readyState == WebSocket.OPEN) {
+				var text = document.getElementById("messageinput").value;
+				if (text.replace(/[\s\n\r]/g, '')) { //发送内容不为空
+					text = '<div class="user">' + document.getElementById("userId").value + ' ' + new Date().toLocaleString() + '</div><pre class="content">' + text + '</pre>';
+					webSocket.send(text);
+					writeResponse('<div class="message message-send">' + text + '</div>');
+					document.getElementById('messageinput').value = '';
+				} else { //发送内容为空
+					writeResponse('<div class="open-msg">发送内容不能为空</div>');
+				}
+			} else {
+				writeResponse('<div class="close-msg">创建链接后才可发送消息</div>');
+			}
+		}
+		
+		//关闭链接
+		function closeSocket() {
+			webSocket ? webSocket.close() : '';
+		}
+		
+		//向消息记录框写内容
+		function writeResponse(text) {
+			messages.innerHTML += text;
+			messages.scrollTop = messages.scrollHeight;
+		}
+		
+		//监听发送内容框回车事件
+		document.getElementById('messageinput').onkeyup = function(e) {
+			var ev = e || window.event;
+			if (ev.keyCode == 13) {
+				document.getElementById('sendBtn').click();
+				document.getElementById('messageinput').value = '';
+			}
+			return false;
+		};
+	</script>
+</body>
+</html>

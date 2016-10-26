@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+<head>
+<title>sample</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="author" content="Double" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="/lib/js/includeHead.js"></script>
+<script type="text/javascript" src="grid-detail.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="defaultbox"></div>
+			<div class="menuWrapper">
+				<div class="menuCnm">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="subMenuWrapper">
+				<div class="subMenu"></div>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="leftMenuWrapper">
+				<div class="leftTitle"></div>
+				<div class="leftMenu">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="acticle">
+				<div class="location">
+					<p>
+						<a class="home-logo">&nbsp;</a>
+						<span>数据表格</span>
+						<span class="fontS" pageName>表格详情</span>
+					</p>
+				</div>
+				<p class="acticleTitle"></p>
+				<div class="searchTilte">查询条件</div>
+				<div class="searchBtns">
+					<button class="btnSearch" id="searchBtn">查询</button>
+				</div>
+				<form class="searchForm" id="searchForm">
+					<table class="horizontalTable">
+						<caption>查询条件</caption>
+						<colgroup>
+							<col width="100" />
+							<col width="429" />
+							<col width="100" />
+							<col width="" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>性别</th>
+								<td><select class="selectNormal" name="gender">
+										<option value="">全部</option>
+										<option value="M">男</option>
+										<option value="F">女</option>
+								</select></td>
+								<th>电话</th>
+								<td><input type="text" class="inputNormal" name="tel" value="" /></td>
+							</tr>
+							<tr>
+								<th>出生日期</th>
+								<td colspan="3">
+									<input type="text" class="startDate" name="start_date" value="" readonly="readonly" />- 
+									<input type="text" class="endDate" name="end_date" value="" readonly="readonly" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<div class="membership">
+					<ul>
+						<li>总金额 : <span>0</span></li>
+						<li>| 总数量 : <span>0</span></li>
+					</ul>
+				</div>
+				<div class="searchBtns">
+					<button class="btnPrimary" id="addBtn">添加</button>
+					<button class="btnPrimary" id="delNoConditionBtn">不按条件删除</button>
+					<button class="btnPrimary" id="delBtn">删除</button> 
+					<button class="btnPrimary" id="dldBtn">下载</button>
+				</div>
+				<table id="datagridExp"></table>
+			</div>
+		</div>
+	</div>
+	
+	<!-- add dialog -->
+	<div class="popupWrapper noHideForm" id="addDlg">
+		<div class="aplPopupWrapper">
+			<div class="aplPopupTitle">
+				<div class="aplPopupTitleFont">添加一行</div>
+				<div class="aplPopupXbtn"><a title="关闭"></a></div>
+			</div>
+			<form>
+				<table class="popupTable" summary="添加">
+					<colgroup>
+						<col width="100"/>
+						<col width="249"/>
+						<col width="100"/>
+						<col width=""/> 
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>name</th>
+							<td>
+								<input type="text" class="inputNormal" name="name" value="" maxlength="15" />
+							</td>
+							<th>gender</th>
+							<td>
+								<select class="selectNormal" name="gender">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>tel</th>
+							<td>
+								<input type="text" class="inputNormal" name="tel" value="" maxlength="11" />
+							</td>
+							<th>email</th>
+							<td>
+								<input type="text" class="inputNormal" name="email" value="" maxlength="30" />
+							</td>
+						</tr>
+						<tr>
+							<th>birthday</th>
+							<td>
+								<input type="text" class="endDate" name="birthday" value="" readonly="readonly"/>
+							</td>
+							<th>exp</th>
+							<td>
+								<input type="text" class="inputNormal" name="exp" value="" maxlength="50" />
+							</td>
+						</tr>
+						<tr>
+							<th>address</th>
+							<td colspan="3">
+								<input type="text" class="inputFit" name="address" value="" maxlength="15" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<div class="btnbox">
+				<button class="btnPrimary btnEdit">编辑</button>
+				<button class="btnPrimary" id="okAddBtn">确认</button>	
+				<button class="btnPrimary btnCancel">取消</button>
+			</div>
+		</div>
+	</div>
+	
+	<!-- add dialog -->
+	<div class="popupWrapper" id="updateDlg">
+		<div class="aplPopupWrapper">
+			<div class="aplPopupTitle">
+				<div class="aplPopupTitleFont">详细信息</div>
+				<div class="aplPopupXbtn"><a title="关闭"></a></div>
+			</div>
+			<form>
+				<table class="popupTable" summary="详情">
+					<colgroup>
+						<col width="100"/>
+						<col width="249"/>
+						<col width="100"/>
+						<col width=""/> 
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>name</th>
+							<td>
+								<input type="hidden" name="id" value=""/>
+								<input type="text" class="inputNormal" name="name" value="" maxlength="15" />
+							</td>
+							<th>gender</th>
+							<td>
+								<select class="selectNormal" name="gender">
+									<option value="M">男</option>
+									<option value="F">女</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>tel</th>
+							<td>
+								<input type="text" class="inputNormal" name="tel" value="" maxlength="11" />
+							</td>
+							<th>email</th>
+							<td>
+								<input type="text" class="inputNormal" name="email" value="" maxlength="30" />
+							</td>
+						</tr>
+						<tr>
+							<th>birthday</th>
+							<td>
+								<input type="text" class="endDate" name="birthday" value="" readonly="readonly"/>
+							</td>
+							<th>exp</th>
+							<td>
+								<input type="text" class="inputNormal" name="exp" value="" maxlength="50" />
+							</td>
+						</tr>
+						<tr>
+							<th>address</th>
+							<td colspan="3">
+								<input type="text" class="inputFit" name="address" value="" maxlength="15" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<div class="btnbox">
+				<button class="btnPrimary btnEdit">编辑</button>
+				<button class="btnPrimary" id="okUpdateBtn">确认</button>	
+				<button class="btnPrimary btnCancel">取消</button>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
