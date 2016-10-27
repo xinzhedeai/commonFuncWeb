@@ -606,7 +606,13 @@ $.extend($.fn.validatebox.defaults.rules, {
             return /^-?[0-9]/.test(value); 
         }, 
         message : '只能输入整数'
-    }
+    },
+	oneInteger: {
+		validator: function(value) {
+			return /^[+]?[1-9]+\d*$/.test(value); 
+		},
+		message: '只能填写1-9整数'
+	}
 });
 
 //扩展datagrid的行号自适应
