@@ -806,3 +806,114 @@ function DrawImage(Img, FitWidth, FitHeight) {//按比例显示
     }
     
 }
+
+/**
+ * 
+ * @functionName: JSONArrayToList
+ * @Description: JSON数组转换为字符串
+ * @param: array
+ */
+function JSONArrayToList() {
+	if (arguments.length === 1) {
+		var array = arguments[0], list = '[';
+		for(var i=0; i<array.length; i++) {
+			list += JSON.stringify(array[i]);
+			if(i < array.length - 1) {
+				list += ',';
+			}
+		}
+		list += ']';
+		return list;
+	} else {
+		alert('JSONArrayToList : 参数错误, 支持1个参数(array)');
+	}
+}
+
+/**
+ * 
+ * @functionName: TableToJSONArray
+ * @Description: 表格转换为JSON数组
+ * 
+ */
+function TableToJSONArray(table, start, end, keyArr) {
+	var list = new Array();
+	var trs = $('#' + table + ' tbody').find('tr');
+	for(var i = 0; i < trs.length; i++) {
+		var keyCount = 0;
+		var trObj = new Object();
+		var tds = $(trs[i]).children();
+		for(var j = start; j <= end && j < tds.length; j++) {
+			var items = tds.eq(j).children();
+			if(items != null && items.length > 0) {
+				for(var q = 0; q < items.length; q++) {
+					trObj[keyArr[keyCount]] = items.eq(q).val();
+					keyCount++;
+				}
+			} else {
+				trObj[keyArr[keyCount]] = tds.eq(j).text();
+				keyCount++;
+			}
+		}
+		list[i] = trObj;
+	}
+	return list;
+}
+
+//页面回到顶部功能
+var scrolltotop={
+		setting:{
+			startline:100, //起始行
+			scrollto:0, //滚动到指定位置
+			scrollduration:400, //滚动过渡时间
+			fadeduration:[500,100] //淡出淡现消失
+		},
+		controlHTML:'<img src="/lib/img/images/topback.gif" style="width:54px; height:54px; border:0; " />', //返回顶部按钮
+		controlattrs:{offsetx:0,offsety:115},//返回按钮固定位置
+		anchorkeyword:"#top",
+		state:{
+			isvisible:false,
+			shouldvisible:false
+		},scrollup:function(){
+			if(!this.cssfixedsupport){
+				this.$control.css({opacity:0});
+			}
+			var dest=isNaN(this.setting.scrollto)?this.setting.scrollto:parseInt(this.setting.scrollto);
+			if(typeof dest=="string"&&jQuery("#"+dest).length==1){
+				dest=jQuery("#"+dest).offset().top;
+			}else{
+				dest=0;
+			}
+			this.$body.animate({scrollTop:dest},this.setting.scrollduration);
+		},keepfixed:function(){
+			var $window=jQuery(window);
+			var controlx=$window.scrollLeft()+$window.width()-this.$control.width()-this.controlattrs.offsetx;
+			var controly=$window.scrollTop()+$window.height()-this.$control.height()-this.controlattrs.offsety;
+			this.$control.css({left:controlx+"px",top:controly+"px"});
+		},togglecontrol:function(){
+			var scrolltop=jQuery(window).scrollTop();
+			if(!this.cssfixedsupport){
+				this.keepfixed();
+			}
+			this.state.shouldvisible=(scrolltop>=this.setting.startline)?true:false;
+			if(this.state.shouldvisible&&!this.state.isvisible){
+				this.$control.stop().animate({opacity:1},this.setting.fadeduration[0]);
+				this.state.isvisible=true;
+			}else{
+				if(this.state.shouldvisible==false&&this.state.isvisible){
+					this.$control.stop().animate({opacity:0},this.setting.fadeduration[1]);
+					this.state.isvisible=false;
+				}
+			}
+		},init:function(){
+			jQuery(document).ready(function($){
+				var mainobj=scrolltotop;
+				var iebrws=document.all;
+				mainobj.cssfixedsupport=!iebrws||iebrws&&document.compatMode=="CSS1Compat"&&window.XMLHttpRequest;
+				mainobj.$body=(window.opera)?(document.compatMode=="CSS1Compat"?$("html"):$("body")):$("html,body");
+				mainobj.$control=$('<div id="topcontrol">'+mainobj.controlHTML+"</div>").css({position:mainobj.cssfixedsupport?"fixed":"absolute",bottom:mainobj.controlattrs.offsety,right:mainobj.controlattrs.offsetx,opacity:0,cursor:"pointer"}).attr({title:"返回顶部"}).click(function(){mainobj.scrollup();return false;}).appendTo("body");if(document.all&&!window.XMLHttpRequest&&mainobj.$control.text()!=""){mainobj.$control.css({width:mainobj.$control.width()});}mainobj.togglecontrol();
+				$('a[href="'+mainobj.anchorkeyword+'"]').click(function(){mainobj.scrollup();return false;});
+				$(window).bind("scroll resize",function(e){mainobj.togglecontrol();});
+			});
+		}
+	};
+	scrolltotop.init();
