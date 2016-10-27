@@ -36,7 +36,7 @@
 ***
 ## selectivizr.js 是一个JavaScript工具，使IE浏览器也可以支持CSS3伪类以及属性选择器.让老的IE浏览器支持19个CSS3伪类，2个伪元素，以及所有的属性选择器。
 
-
+## `cloud-zoom.1.0.2.min.js` 一个小型的图像放大镜插件
 
 >+   [0.9.11](http://res.websdk.rongcloud.cn/RongIMClient-0.9.11.min.js) 
 > 分隔符|

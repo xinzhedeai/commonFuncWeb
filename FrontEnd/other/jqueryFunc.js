@@ -99,3 +99,31 @@ $.ajaxSetup({
 
 $('#' + listNumber + '-receiver').hide();//拼串选择器
 $("#form-add").form('clear');//easyui清楚表单方法
+
+//定时器，发送信息倒计时。
+$register.btnCount = 60;
+$register.timer = null;
+$("body").bind("click", myaction = function(){
+	$("#code").focus();
+	$("#getcode").attr("disabled",true);
+	setBtnDisabled(); 
+ });
+
+function setBtnDisabled() {
+	 $("#getcode").text( "(" + $register.btnCount + "秒后)重新发送");
+		   if ($register.btnCount == 0) {
+		       window.clearTimeout($register.timer);
+		        $("#getcode").text( "获取校验码");
+		        $("#code").focus();
+		        $("#getcode").attr("disabled",false);
+		       return false;
+		   }
+		   $register.btnCount = $register.btnCount - 1;
+		   $register.timer = window.setTimeout("setBtnDisabled()", 1000);
+		   $("body").unbind("click", myaction);
+};
+
+//页面加载图片出现错误时，给一个默认图片
+$("img").error(function() { 
+	$(this).attr("src", contextPath + "/lib/img/images/microlaw.jpg"); 
+});

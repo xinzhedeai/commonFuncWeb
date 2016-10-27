@@ -776,3 +776,33 @@ document.onkeypress = banKeyEvent;
 //禁止后退键
 //作用于IE、Chrome
 document.onkeydown = banKeyEvent;
+
+//图片比例缩放
+$(".img img").load(function(){
+	DrawImage(this, 416, 312);
+	$(".img img").show();
+});
+function DrawImage(Img, FitWidth, FitHeight) {//按比例显示
+    var image = new Image();
+    image.src = Img.src;
+    if (image.width > 0 && image.height > 0) {
+        if (image.width / image.height >= FitWidth / FitHeight) {
+            if (image.width > FitWidth) {
+                Img.width = FitWidth;
+                Img.height = (image.height * FitWidth) / image.width;
+            } else {
+                Img.width = image.width;
+                Img.height = image.height;
+            }
+        } else {
+            if (image.height > FitHeight) {
+                Img.height = FitHeight;
+                Img.width = (image.width * FitHeight) / image.height;
+            } else {
+                Img.width = image.width;
+                Img.height = image.height;
+            }
+        }
+    }
+    
+}
