@@ -1,22 +1,31 @@
 ##7种基本的刷新方法
-####10表示间隔10秒刷新一次
-```<meta http-equiv="refresh"content="10;url=跳转的页面"> 
-<script language=''javascript''>
-    window.location.reload(true);
-</script>```
+####10表示间隔10秒刷新
+
+
+
+`<meta http-equiv="refresh"content="10;url=跳转的页面"> `
+`<script language="javascript">`
+   ` window.location.reload(true);`
+`</script>`
+
 ####如果是你要刷新某一个iframe就把window给换成frame的名字或ID号
-`<script language=''javascript''>
-    window.navigate("本页面url");
-</script>`
-`function abc()
+
+`<script language=''javascript''>`
+    `window.navigate("本页面url");`
+`</script>`
+
+function abc()
 {
     window.location.href="/blog/window.location.href";
     setTimeout("abc()",10000);
 }`
+
 ####刷新本页：
    ` Response.Write("<script type="text/javascript">window.location.href=window.location.href;</script>")`
+   
 ####刷新父页：
     `Response.Write("<script type="text/javascript" >opener.location.href=opener.location.href;</script>")`
+    
 ####转到指定页:
     `Response.Write("<script type="text/javascript" >window.location.href='yourpage.aspx';</script>")`
     
