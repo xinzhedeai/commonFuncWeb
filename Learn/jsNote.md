@@ -53,6 +53,7 @@ for(var i=0;i<=5;i++){
 	    sum += arr[i];
 	 }
 `
+
 ####css sprite 被称为css精灵，可以将网站上零星的图片集中为一张。减少页面图片的请求。运用css sprite技术集中小的背景图或图标, 减小页面http请求, 但注意, 请务必在对应的sprite psd源图中划参考线, 并保存至img目录下。 
 ####后期优化中, JavaScript非注释类中文字符须转换成unicode编码使用, 以避免编码错误时乱码显示。
 ####减少reflow，大量使用visibility而不是display
