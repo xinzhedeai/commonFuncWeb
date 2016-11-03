@@ -5,3 +5,9 @@
 }
 /* ie8下，滤镜透明不好用，需要用下面这种方法设置样式--黑色半透明 */
 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);
+
+/* 火狐和谷歌浏览器下button高度不一致 */
+button::-moz-focus-inner {
+    border:0;
+    padding:0;
+}

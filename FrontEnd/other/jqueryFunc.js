@@ -148,3 +148,19 @@ $("img").error(function() {
 		return result;
 	};
 }) (jQuery.fn.clone);
+
+/**
+ * 所有表单不能输入特殊字符
+ * 统一页面中的表单类名，便于管理。
+ * 通过下面的控制，就不用再每个获取form字段值的时候再次trim操作了。
+ */
+$('form').on('keyup', 'input, textarea', function(e) {
+	//禁止字符  ':222, ;:186, ^:54
+	if (e.keyCode == 222 || e.keyCode == 186 || e.keyCode == 54) {
+		$(this).val($(this).val().replace(/[';^]/g, ''));
+	}
+}).on('blur', 'input, textarea', function(e) {
+	var newValue = $(this).val().trim();
+	newValue = newValue.replace(/[\s]{2,}/, ' ');//出现2次以上的空格就替换为一个空格
+	$(this).val(newValue);
+});
