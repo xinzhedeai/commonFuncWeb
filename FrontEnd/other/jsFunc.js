@@ -963,3 +963,10 @@ var scrolltotop={
 	var date = new Date();      
 	window.alert(date.pattern("yyyy-MM-dd hh:mm:ss"));
 	
+//	回车事件触发
+	document.onkeydown = function(e) {
+		var ev = document.all ? window.event : e;
+		if (ev.keyCode == 13) {
+			$("#loginBtn").click();
+		}
+	}
