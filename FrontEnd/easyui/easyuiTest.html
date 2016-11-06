@@ -162,6 +162,8 @@
 						</colgroup>
 						<tbody>
 							<tr>
+								<!-- 验证名称是否合法 -->
+								<input type="text" id="company_nm_cn" class="inputNormal idField easyui-validatebox" name="company_nm_cn" value="" maxlength="30" data-options="required:true,validType:'remote[\'/v1/api/common/check-comnm.json\']'" />
 								<th>日期早于2015.8.2</th>
 								<td>
 									<input type="text" class="startDate validate[custom[date],past[2015/08/02]]" value="" readonly="readonly" />;

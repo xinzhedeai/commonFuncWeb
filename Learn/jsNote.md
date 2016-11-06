@@ -62,3 +62,9 @@ for(var i=0;i<=5;i++){
 网站中的链接路径全部采用相对路径，一般链接到某一目录下的缺省文件的链接路径不必写全名，如我们不必这样：<a href=”aboutus/index.htm”> 而应该这样：<a href=”aboutus/”>，所有内页指向首页的链接写成<a href=”/”>
 在浏览器里，当我们点击空链接时，它会自动将当前页面重置到首端，从而影响用户正常的阅读内容，我们用代码“javascript:void(null)”代替原来的“#”
 ```
+
+#### window.open()打开一个新窗口。
+` var userInfo = window.userInfo, company_type, user_level;` *多个变量声明方式。*
+`parseInt(result.total)` *当获取的数字类型是字符串时，转化可以是用''乘以1的方法解决；如果是数字转化为字符串，可以用1+''的方法*
+
+`'innerbill' in $.parseJSON(getCookie("map"))` *查看对象中是否有某个某个属性，可以使用in来判断*

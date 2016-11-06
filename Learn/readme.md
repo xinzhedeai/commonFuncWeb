@@ -3,5 +3,49 @@
 [haliluya](http://www.baidu.com)
 *哈利路亚*
 **哈利路亚**
-
 ******
+*表单提交样例*
+####onsubmit是一个表单提交是所触发的方法。这里面用的事easyui的filebox插件
+```<form style="margin-top: 15px;" action="/v1/api/waybill/exporter/customer-lable-offline.excel" 	method="post" enctype="multipart/form-data" onsubmit="return checksubmit()">
+ <input id="customerLabel" class="easyui-filebox" name="file" data-options="prompt:'选择文件'" 	buttonText="浏览文件" style="width: 50%;height: 30px;">
+	<button class="btnPrimary" type="submit">下载</button>
+</form>```
+
+#### 自适应头文件
+` <meta charset="utf-8">`
+`   <meta http-equiv="X-UA-Compatible" content="IE=edge">`
+`    <meta name="viewport" content="width=device-width, initial-scale=1">`
+ `   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->`
+ 
+####判断是手机或电脑访问
+	var system ={};  
+    var p = navigator.platform;       
+    system.win = p.indexOf("Win") == 0;  
+    system.mac = p.indexOf("Mac") == 0;  
+    system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);     
+    if (system.win||system.mac||system.xll) {  //如果是电脑不跳转
+         
+    } else{  //如果是手机,跳转到微信页面
+        window.location.href = '/wechat/index.html';  
+    }
+    
+####判断是否需要直接跳转到上次访问的页面
+`$('.btn-login').click(function() {`
+   ` if (localStorage.lastRequestPage && localStorage.lastRequestPage.indexOf('login') == -1 && 		document.cookie.indexOf('access-token') != -1) {`
+  `  			location.href = localStorage.lastRequestPage;`
+    `		} else {`
+    			`location.href = '/login.html';`
+    		`}`
+    	`});`
+   
+####将多个空格转化为一个
+`var val = $(this).val().replace(/\s/g, '')`
+
+####switch
+`switch (value){``
+	`case '1' :`
+	`  todo;`
+	 ` break;`
+	`default :`
+	` break;` 
+`}`

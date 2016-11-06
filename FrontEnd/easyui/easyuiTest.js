@@ -175,4 +175,9 @@ $(function() {
 	});
 });
 
-
+//只有一个主键的情况下，采用updateRow的方法更新行；
+//如果有多个主键，采用reload的方法更新当前页
+$($agent.datagrid).datagrid('updateRow', {
+	index: $($agent.datagrid).datagrid('getRowIndex', $($agent.dialog).find('form #company_id').val()),
+	row: serializeObject($($agent.dialog).find('form'))//从刚才弹窗中的数据直接更新到行数据，这样就避免了请求接口了。
+});

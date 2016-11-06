@@ -11,3 +11,8 @@ button::-moz-focus-inner {
     border:0;
     padding:0;
 }
+/* ie7兼容性 */
+  *display: inline;
+  /* IE7 inline-block hack */
+  *zoom: 1;
+  *margin-right: .3em;
