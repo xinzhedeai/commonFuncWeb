@@ -12,6 +12,7 @@ for(var i=0;i<=5;i++){
     var x=100;
 }
 </script>`
+
 <p onclick="alert(i);">显示 i 变量的值</p>
 <p onclick="alert(x);">显示 x 变量的值</p>
 `</body>
