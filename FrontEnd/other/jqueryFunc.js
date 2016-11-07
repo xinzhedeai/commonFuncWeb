@@ -183,3 +183,5 @@ $confirm('确认要导出内部账单吗？', function() {
 $.each($($innerBill.dialogChange).find('form').serializeArray(), function(index, field) {
 	modifyPrice.addParam(field.name, encodeURIComponent(field.value));
 });
+
+$('input[name="waybill_no"]').unbind().keypress(function(e) {})//解绑回车事件再重新绑定其他事件

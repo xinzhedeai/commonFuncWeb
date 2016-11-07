@@ -270,7 +270,7 @@ function getCookie(name) {
  * 
  * @functionName: jumpBack
  * @Description: 从详情页跳回
- * 
+ * @use: jumpBack('airbags');
  */
 function jumpBack(destination) {
 	var from = getParameter('from');
