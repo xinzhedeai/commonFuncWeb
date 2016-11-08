@@ -185,3 +185,21 @@ $.each($($innerBill.dialogChange).find('form').serializeArray(), function(index,
 });
 
 $('input[name="waybill_no"]').unbind().keypress(function(e) {})//解绑回车事件再重新绑定其他事件
+
+$alert(res.errMsg, function() {//提示确认后进行回调函数里面的操作
+	window.location.href = "masters.html";
+});
+$confirm(result.msg + '是否继续入单？', {//提示窗可以定义两种按钮以及相应的处理函数
+	yesText : '是',
+	yesHandler : function() {
+		location.reload();
+	},
+	noText : '否',
+	noHandler : function() {
+		jumpBack('masters');
+	}
+});
+
+//再添加弹窗里面，如果有日期输入框，那么可以直接默认赋值为今天的日期，提高用户体验
+var today = new Date();
+$('#startDate').val(formatDate(today));

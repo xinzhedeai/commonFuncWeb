@@ -69,3 +69,6 @@ for(var i=0;i<=5;i++){
 `parseInt(result.total)` *当获取的数字类型是字符串时，转化可以是用''乘以1的方法解决；如果是数字转化为字符串，可以用1+''的方法*
 
 `'innerbill' in $.parseJSON(getCookie("map"))` *查看对象中是否有某个某个属性，可以使用in来判断*
+  
+`	var operatFee = parseFloat($('input[name="master_weight"]').val())*0.2;`*浮点数转化，然后进行四舍五入保留三位小数*
+`	operatFee = (Math.round(operatFee*1000)/1000).toFixed(3);`
