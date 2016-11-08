@@ -164,3 +164,24 @@ $('form').on('keyup', 'input, textarea', function(e) {
 	newValue = newValue.replace(/[\s]{2,}/, ' ');//出现2次以上的空格就替换为一个空格
 	$(this).val(newValue);
 });
+
+/**
+ * 导出文件方式的第二种方法
+ * 并通过定时器定义按钮动态效果。
+ */
+$confirm('确认要导出内部账单吗？', function() {
+	window.location.href = "/v1/api/analysis/bill/export-inner-bills.excel?sender_nm_cn=" + sender_nm_cn + "&master_id=" + master_id + "&start_date=" + start_date + "&end_date=" + end_date + "&waybill_id=" + waybill_id + "&cargo_type=" + cargo_type;
+	$('#innerBill').text('处理中...');
+	setTimeout("$('#innerBill').text('下载中...');", 4000);
+	setTimeout("$('#innerBill').text('导出内部账单');", 8000);
+});
+
+/**
+ * 使用jquery遍历方法
+ *
+ */
+$.each($($innerBill.dialogChange).find('form').serializeArray(), function(index, field) {
+	modifyPrice.addParam(field.name, encodeURIComponent(field.value));
+});
+
+$('input[name="waybill_no"]').unbind().keypress(function(e) {})//解绑回车事件再重新绑定其他事件

@@ -270,7 +270,7 @@ function getCookie(name) {
  * 
  * @functionName: jumpBack
  * @Description: 从详情页跳回
- * 
+ * @use: jumpBack('airbags');
  */
 function jumpBack(destination) {
 	var from = getParameter('from');
@@ -477,8 +477,8 @@ function formatDate() {
 			return '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 		}
 		if (!(date instanceof Date)) {
-			date = date.split(/\s/)[0].split('-');
-			date = new Date(date[0], parseInt(date[1]) - 1, date[2]);
+			date = date.split(/\s/)[0].split('-');//日期格式1993-01-18 11:33:33 使用split截取字符串
+			date = new Date(date[0], parseInt(date[1]) - 1, date[2]);//获取日期的年月日
 		}
 		var year = date.getFullYear(), month = date.getMonth() + 1, day = date.getDate();
 		month = month < 10 ? '0' + month : month;
