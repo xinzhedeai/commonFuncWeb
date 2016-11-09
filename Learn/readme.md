@@ -54,4 +54,12 @@
 `modifyBasicInfoCompany.addParam('default_technologys', encodeURIComponent(JSON.stringify($(datagridTechnology).datagrid('getRows'))));`
 
 ****
-[钟表效果](http://www.cnblogs.com/xljzlw/p/4399414.html)
+[钟表效果](http://www.cnblogs.com/xljzlw/p/4399414.html)    
+[css控制打印布局](http://blog.csdn.net/wyaspnet/article/details/6436368)  
+`@media print {`
+`	body {`
+`		display: inherit; /*设置为none，则打印空白，即不能打印*/`
+`	}`
+`}`
+
+

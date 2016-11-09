@@ -970,3 +970,81 @@ var scrolltotop={
 			$("#loginBtn").click();
 		}
 	}
+
+	// 检测IE版本
+	function checkIEV() {
+		var X, V, N, A;
+		V = navigator.appVersion;
+		N = navigator.appName;
+		A = navigator.userAgent;
+		var yesIE = A.search(/Trident/i);
+		if (N == "Microsoft Internet Explorer")
+			X = parseFloat(V.substring(V.indexOf("MSIE") + 5, V.lastIndexOf("Windows")));
+		else {
+			X = parseFloat(V);
+			if (yesIE > 0)
+				$("#tip").text("");
+			else {
+				// $("#tip").text("当前使用的为非IE浏览器，请在点击打印按钮后按如下提示进行设置：自定义页边距，设置页边距为左右各5mm，上下0mm，取消打印页眉页脚,勾选打印背景色和图片。");
+			}
+		}
+		return X;
+	}
+	
+	// 设置为不打印
+	function noPrint() {
+		var stylef = document.styleSheets[0];//获取样式表
+		var rul = stylef.rules[0]; /* 上面@media 那一段 */
+		rul.style.display = "none";
+	}
+	
+	// 设置网页打印的页眉页脚和页边距
+	function PageSetup_Null() {
+		var HKEY_Root, HKEY_Path, HKEY_Key;
+		HKEY_Root = "HKEY_CURRENT_USER";
+		HKEY_Path = "\\Software\\Microsoft\\Internet Explorer\\PageSetup\\";
+		var strReg = "HKEY_CURRENT_USER\\Software\\Microsoft\\Internet   Explorer\\Main\\Print_Background"
+		try {
+			var Wsh = new ActiveXObject("WScript.Shell");
+			HKEY_Key = "header";
+			// 设置页眉（为空）
+			// Wsh.RegRead(HKEY_Root+HKEY_Path+HKEY_Key)可获得原页面设置
+			Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "");
+			HKEY_Key = "footer";
+			// 设置页脚（为空）
+			Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "");
+			// 打印背景颜色和图片
+			Wsh.RegWrite(strReg, "yes");
+			// 这里需要浏览器版本，8.0以下的页边距设置与8.0及以上不一样，注意注册表里的单位是英寸，打印设置中是毫米，1英寸=25.4毫米
+			if (checkIEV() < 8.0) {
+				HKEY_Key = "margin_left";
+				// 设置左页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0.25");
+				HKEY_Key = "margin_right";
+				// 设置右页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0.25");
+				HKEY_Key = "margin_top";
+				// 设置上页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0.10");
+				HKEY_Key = "margin_bottom";
+				// 设置下页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0.10");
+			} else {
+				HKEY_Key = "margin_left";
+				// 设置左页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0");
+				HKEY_Key = "margin_right";
+				// 设置右页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0");
+				HKEY_Key = "margin_top";
+				// 设置上页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0.405");
+				HKEY_Key = "margin_bottom";
+				// 设置下页边距
+				Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, "0.405");
+			}
+		} catch (e) {
+			noPrint();
+			alert("ActiveX控件被禁用,请按下面步骤操作：\n1、请打开浏览器‘工具’菜单/‘选项’/‘安全’下的‘自定义级别’，\n把‘对没有标记为安全的activex控件进行初始化和脚本运行’设置为‘启用’。\n2、刷新本页。");
+		}
+	}

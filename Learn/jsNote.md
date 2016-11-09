@@ -71,4 +71,30 @@ for(var i=0;i<=5;i++){
 `'innerbill' in $.parseJSON(getCookie("map"))` *查看对象中是否有某个某个属性，可以使用in来判断*
   
 `	var operatFee = parseFloat($('input[name="master_weight"]').val())*0.2;`*浮点数转化，然后进行四舍五入保留三位小数*
-`	operatFee = (Math.round(operatFee*1000)/1000).toFixed(3);`
+`	operatFee = (Math.round(operatFee*1000)/1000).toFixed(3);`  
+`$('#sagawaTxt').is(':checked')`*判断某节复选框是否被选中状态*  
+
+`var setInteval = setInterval(function(){},1000)` *设置定时器,每一秒执行一次*    
+`clearInterval(setInterval);`*清楚定时器*  
+``stringObject.search()` *方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。返回stringObject 中第一个与 regexp 相匹配的子串的起始位置*  
+`<style type="text/css">  `*js获取样式表style里面样式的设置属性*  
+`#div1{width:100%;height:400px; background:red;} ` 
+`</style>  `
+`window.onload=init; ` 
+    `function $(id){  `
+             ` return "string" == typeof id ? document.getElementById(id) : id; ` 
+   ` } ` 
+   ` function init(){  `   
+   		*Mozilla和Safasi中是cssRules，在个别版本的Chrome下需要用window.CSSRule.STYLE_RULE*
+      `  var ocssRules=document.styleSheets[0].cssRules || document.styleSheets[0].rules || window.CSSRule.STYLE_RULE;`  
+      `  var theEl=$("div1");  `
+       ` ocssRules[0].style.background="yellow";  `
+      `  alert(ocssRules[0].style.background);  `
+    `}`  
+    
+##块级代码块 有两种方式 每行代码开始空四个空格或者是整体代码外边用```包裹，但是eclipse下的md编辑，不支持后者
+    var HKEY_Root, HKEY_Path, HKEY_Key; **测试**  
+	HKEY_Root = "HKEY_CURRENT_USER";
+
+**原来js还是可以控制浏览器打印机的参数的，哈哈，好强大！！**
+		

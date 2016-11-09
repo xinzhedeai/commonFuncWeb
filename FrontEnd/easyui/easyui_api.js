@@ -49,3 +49,19 @@ $('input[name="departure_time"]').timepicker({
 		$(this).validatebox('validate');
 	}
 });
+//easyui tree的使用
+var parentNode = $($menu.treegrid).treegrid('getParent', node.menu_id);//获取当前选择树节点的父亲节点
+var node = $($menu.treegrid).treegrid('getSelected'); // 选择节点
+$($menu.treegrid).treegrid('update', {//更新节点数据
+	id: node.menu_id,
+	row: serializeObject($($menu.dialogMenu).find('form'))
+});
+//数据网格 列编辑器配置
+editor : {
+	type : 'numberbox',
+	options : {
+		required : true,
+		precision : 3,
+		novalidate : true
+	}
+}
