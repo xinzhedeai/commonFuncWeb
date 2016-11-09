@@ -50,4 +50,8 @@
 	` break;` 
 `}`
 
+*之所以编码请求参数，是防止参数中的一些字符影响参数传递*  
+`modifyBasicInfoCompany.addParam('default_technologys', encodeURIComponent(JSON.stringify($(datagridTechnology).datagrid('getRows'))));`
 
+****
+[钟表效果](http://www.cnblogs.com/xljzlw/p/4399414.html)
