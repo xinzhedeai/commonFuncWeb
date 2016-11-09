@@ -66,3 +66,10 @@ E~F  是指E后面所有的F元素。
 `class^="icon-" 代表以类icon-为开始的样式  class*="icon-" 代表凡包含icon-的类`  
 `::selection{background:red;color:#fff;}`*特别醒目的样式，类似于鼠标选中一段文字，背景和文字颜色不一样。可能就是这个原理*
 
+`.elm{border:hidden} `*与none相同定义无边框，但是对于表，hidden只是用来解决边框冲突。*
+
+`border-top-colors: ###111 #222 #333 #444 #555` *边框颜色 实现多颜色边框，每个颜色填充一像素*  
+`-moz-  -webkit-  -ms- -o- border-top-colors` *浏览器前缀+正常写法*  
+`-prefix-free` *插件可以略去浏览器前缀，方便节省时间*  
+`border-radius`*取值为none并无效果，需要将元素的border-radius设置为0*   
+`ie兼容性问题，可以使用第三方插件IE-css3.js,PIE等` *得看书啊。要不然怎么知道还有这些好用的东西*  
