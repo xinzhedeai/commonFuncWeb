@@ -96,5 +96,6 @@ for(var i=0;i<=5;i++){
     var HKEY_Root, HKEY_Path, HKEY_Key; **测试**  
 	HKEY_Root = "HKEY_CURRENT_USER";
 
-**原来js还是可以控制浏览器打印机的参数的，哈哈，好强大！！**
+**原来js还是可以控制浏览器打印机的参数的，哈哈，好强大！！**  
+	`window.resizeTo(1400, 1000); ` *方法用于把窗口大小调整为指定的宽度和高度。*
 		

@@ -73,3 +73,16 @@ E~F  是指E后面所有的F元素。
 `-prefix-free` *插件可以略去浏览器前缀，方便节省时间*  
 `border-radius`*取值为none并无效果，需要将元素的border-radius设置为0*   
 `ie兼容性问题，可以使用第三方插件IE-css3.js,PIE等` *得看书啊。要不然怎么知道还有这些好用的东西*  
+`box-shadow` *对象阴影层级：对象阴影同盒模型层次一样，边框->内阴影->背景图片->背景色->外阴影->对象背景*  
+
+> + 图片上的阴影inset属性是没有效果的。  
+> + 兼容ie低版本，可以使用ie的滤镜来模拟实现box-shadow的效果  
+
+    filter:progid:DXImageTransform.Microsoft.Shadow(color='颜色值'，Direction=阴影角度（数值）,Strength=阴影半径（数值）);  
+    overflow:hidden; *有清楚浮动的效果。但是使用clear有些时候效果会更好些*  
+    input:-moz-placeholder{ *可以设置输入框提示默认显示文字的样式*
+    	color:green;
+	}  
+    #formWrapper::-moz-focus-inner{border:0;}*firefox下去去除焦点线*
+    background-attachment取值为“fixed”时，一般运用在html或body标签上，使用在其他标签上不能达到固定效果。  
+	transform:scale(2)缩放比例便为原来的2倍
