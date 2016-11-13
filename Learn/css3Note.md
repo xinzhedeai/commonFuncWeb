@@ -86,3 +86,5 @@ E~F  是指E后面所有的F元素。
     #formWrapper::-moz-focus-inner{border:0;}*firefox下去去除焦点线*
     background-attachment取值为“fixed”时，一般运用在html或body标签上，使用在其他标签上不能达到固定效果。  
 	transform:scale(2)缩放比例便为原来的2倍
+	
+    background-size:cover配合background-position:center常用来制作满屏背景效果。需要放一个足够大的背景图片，以防在较大分辨率下致使图片失真。

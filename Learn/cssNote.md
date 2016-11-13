@@ -6,3 +6,7 @@
 	window.onresize = function() {  *当窗口进行变化的时候，强行将窗口定义一个固定的值，主要是防止影响打印*
 		window.resizeTo(1400, 1000);
 	}
+
+##CSS3 Media Queries 一个web响应式前端css插件    
+[CSS3 Media Queries详解]（http://www.cnblogs.com/mofish/archive/2012/05/23/2515218.html）  
+*不支持css3 media queries浏览器按background-size:cover模式显示背景图片*

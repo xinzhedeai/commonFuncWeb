@@ -23,3 +23,7 @@
 	}
 ##为什么*1000后又除以1000，什么单位换算啊？？ - - 路径同上
 	packObject.package_weight = (Math.round((packObject.package_weight/copyNum)*1000)/1000).toFixed(3);
+	
+##有时间测试下easyui的append行与delete行跟以往直接传递id列表操作表然后reload一下网格的方法有什么不同，因该是在效率发面会有区别吧。
+
+		

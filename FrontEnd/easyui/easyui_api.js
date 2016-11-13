@@ -65,3 +65,23 @@ editor : {
 		novalidate : true
 	}
 }
+//取消编辑行
+var index = $(editBtn).parents('tr.datagrid-row').attr('datagrid-row-index');//添加行数据的时候，出于在编辑状态时获取行index的方法
+$($addWaybill.datagridPack).datagrid('cancelEdit', index);
+
+
+//清空方法有两种
+//第一种.
+$('#clearBtn').click(function() {
+	//$($waybillLablePrint.datagridWaybill).datagrid('loadData',{total:0,rows:[]}); 
+	 var item = $($waybillLablePrint.datagridWaybill).datagrid('getRows');
+     if (item) {
+         for (var i = item.length - 1; i >= 0; i--) {
+             var index = $($waybillLablePrint.datagridWaybill).datagrid('getRowIndex', item[i]);
+             $($waybillLablePrint.datagridWaybill).datagrid('deleteRow', index);
+         }
+     }
+});
+//第二种
+//删除datagrid中原有数据
+$($stockmanage.datagridGoods).datagrid('loadData', { total: 0, rows: [] });

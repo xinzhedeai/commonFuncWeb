@@ -98,4 +98,24 @@ for(var i=0;i<=5;i++){
 
 **原来js还是可以控制浏览器打印机的参数的，哈哈，好强大！！**  
 	`window.resizeTo(1400, 1000); ` *方法用于把窗口大小调整为指定的宽度和高度。*
-		
+
+
+**取两个条码进行打印，左边一个，右边一个  
+
+        for (var i = 0; i < result.length; i += 2) //取两个条码进行打印
+        {
+            var rightNum = "";
+            var leftNum = result[i];
+            if(i + 2 <= result.length) {
+                rightNum = result[i + 1];
+            }
+            try {
+            	$waybillLablePrintNumber.printerInitialize(); 	//初始化
+            	$waybillLablePrintNumber.BarcodePrint(leftNum,rightNum);
+            } catch(e) {
+            	$alert("打印出错,请检查打印机等设备");
+            }
+        }
+        $("#allNumber").val("").focus();
+       
+	   $('#onlyCustomsCK').prop("checked",false);//设置属性值，类似attr
