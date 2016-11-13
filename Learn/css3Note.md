@@ -88,3 +88,19 @@ E~F  是指E后面所有的F元素。
 	transform:scale(2)缩放比例便为原来的2倍
 	
     background-size:cover配合background-position:center常用来制作满屏背景效果。需要放一个足够大的背景图片，以防在较大分辨率下致使图片失真。
+    
+    text-intent ;定义文本首行缩进。  
+    letter-spacing:设置字符与字符的间距  
+    word-spacing::定义词与词之间的间距  
+    text-shadow在ie8及以下中会有 兼容性的问题可以使用E{filter:shadow(Color=颜色值，direction=树枝Strength=数值) }
+    text-overflow:解决内容溢出的问题，不需要写js截取后显示了，实现显示省略标记(...)效果，还需要white-space:nowrap和overflow：hidden两个属性的配合。需要定义容器的宽度。  
+##任何的理论都需要实践  
+	word-wrap：break-word：将内容在边界内换行(不截断英文单词换行)
+	word-wrap：应用该<pre><table>中时，是没有任何效果的。 
+	white-space:pre和<pre>展示的效果极其类似，它会保留代码里输入的文本格式。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+	
+    
+    
+ 	
+    
+    
