@@ -10,3 +10,174 @@
 ##CSS3 Media Queries 一个web响应式前端css插件    
 [CSS3 Media Queries详解]（http://www.cnblogs.com/mofish/archive/2012/05/23/2515218.html）  
 *不支持css3 media queries浏览器按background-size:cover模式显示背景图片*
+
+	table-layout:fixed想要一个tale固定大小，里面的文字强制换行 
+	word-wrap : break-word;
+	firefox下，长串英文会出现问题。使用word-wrap:break-word和overflow:hidden结合。
+
+####当子元素宽度大于父元素宽度时，容易撑破父元素。此时，好的方法是使用box-sizing ：border-box；-IE传统模式（只看元素的内容的宽度，儿与padding和border和margin无关）。  
+####overflow的属性：no-display（当内容溢出容器室，不显示元素，类似于display：none，不占空间位置）  
+				  no-content:当内容溢出容器时不显示内容，类似于display:visibility:hidden 占空间位置
+	
+	resize:none;禁止调整textarea大小拖拽内容
+	outline-offset:定义元素框的偏移位置的数值。不会影响布局，不会影响文档流，以为它不是文档中的一部分。
+	border：可以部分设置，不可以向内拓展。outline是始终闭合的。可以向内拓展。
+	outline：10px solid #ccc;模拟border实现边框，防止以为boderd宽度改变，影响布局。  
+	
+	css定义的时后如果类的属性值名称过长而且带有空格，则需要将属性值用引号包含。'scans serif'.
+	p{color:windowtext;}用户系统色盘值将会根据用户系统所设定的颜色值而改变。  
+	font-variant：small-caps 定义字体为小型的大写字母，针对英文。
+	list-style-imge：(image.gig)覆盖预设标记用image.git图片代替
+	list-style-position：inside;列表项目标记防止在文本以内，且环绕文本根据标记对齐。
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+					
