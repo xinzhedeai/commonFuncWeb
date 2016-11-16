@@ -28,7 +28,19 @@
 	p{color:windowtext;}用户系统色盘值将会根据用户系统所设定的颜色值而改变。  
 	font-variant：small-caps 定义字体为小型的大写字母，针对英文。
 	list-style-imge：(image.gig)覆盖预设标记用image.git图片代替
-	list-style-position：inside;列表项目标记防止在文本以内，且环绕文本根据标记对齐。
+	list-style-position：inside;列表项目标记防止在文本以内，且环绕文本根据标记对齐。  
+	****  
+	display：box或者是box-{*}属性 -2009版本的
+	display：flexbox或者flex（）函数-2011版本的
+	display:flex或者是flex-{*}属性，当前规范
+	
+	box-lines 与horizon 是水平排列
+	box-block 与verticle是垂直排列
+	box-pack取值为justify的时候，fixfox浏览器下以start方式展示
+	
+	
+	
+	
 	
 	
 	
