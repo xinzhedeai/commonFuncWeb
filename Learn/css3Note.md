@@ -99,7 +99,8 @@ E~F  是指E后面所有的F元素。
 	word-wrap：应用该<pre><table>中时，是没有任何效果的。 
 	white-space:pre和<pre>展示的效果极其类似，它会保留代码里输入的文本格式。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 	
-    
+    flex-flow是flex-direction和flex-wrap属性的缩写。
+    .flexbox-container{display:-ms-flexbox; -ms-flex-direction:row; -ms-flex-wrap:wrap;}
     
  	
     
