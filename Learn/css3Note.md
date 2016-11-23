@@ -103,5 +103,11 @@ E~F  是指E后面所有的F元素。
     .flexbox-container{display:-ms-flexbox; -ms-flex-direction:row; -ms-flex-wrap:wrap;}
     
  	
-    
+	.flexbox-container > div:hover{-ms-flex:2} //使得悬浮的时候，当前元素自动变宽。
+	
+	column-width的值为auto需要配合多列的其他属性才能有分列效果。  
+	column-gap 只能给列设置间距，而margin只能应用于元素之间。  
+	text-transform : capitalize; //文本中的每个单词以大写字母开头。  
+	ellipse椭圆渐变  
+	webkit font smoothing ： antialiased//反锯齿
     
