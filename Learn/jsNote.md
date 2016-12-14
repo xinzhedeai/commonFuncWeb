@@ -117,10 +117,20 @@ for(var i=0;i<=5;i++){
             }
         }
         $("#allNumber").val("").focus();
-       
+   
 	   $('#onlyCustomsCK').prop("checked",false);//设置属性值，类似attr	
 	   
 	   splice（1）,从数组中从第二个开始往后删，返回的是包含被删的数据集合。
 	   splice(1,2),从第二个数开始删两个数
 	   splice(1,0,33),在第二个位置上添加一个33，原有的数据向后移动
 	   splice(1,1,22,33)在第二个位置添加22，33，两个数，并且之前在第二个未知的 数据被删掉。
+	   $('#onlyCustomsCK').prop("checked",false);//设置属性值，类似attr
+
+	Bar.prototype = new Foo();
+	Bar.prototype.foo = 'hello world';
+	Bar.prototype.constructor = Bar;
+	var test = new Bar();//创建一个新实例，但是不会创造一个新的Foo实例。而是重复使用它
+	原型上的那个实例；因此所欲的Bar实例都会共享相同的value属性。	
+	hasOwnProperty是javascript中唯一一个处理但是不查找原型链的函数。	
+	//js中的hasOwnProperty可能被非法占用。作为一个对象的属性，就不能通过这个方法获取期待的结果了。解决办法如下。
+	({}).hasOwnProperty.call(foo, 'bar');//使用其他对象的hasOwnProperty，并将其上下文设置为foo

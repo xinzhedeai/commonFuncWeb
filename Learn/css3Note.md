@@ -110,4 +110,5 @@ E~F  是指E后面所有的F元素。
 	text-transform : capitalize; //文本中的每个单词以大写字母开头。  
 	ellipse椭圆渐变  
 	webkit font smoothing ： antialiased//反锯齿
-    
+   
+	backface-visibility 属性定义当元素不面向屏幕时是否可见。如果在旋转元素不希望看到其背面时，该属性很有用。
