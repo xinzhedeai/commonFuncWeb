@@ -118,4 +118,9 @@ for(var i=0;i<=5;i++){
         }
         $("#allNumber").val("").focus();
        
-	   $('#onlyCustomsCK').prop("checked",false);//设置属性值，类似attr
+	   $('#onlyCustomsCK').prop("checked",false);//设置属性值，类似attr	
+	   
+	   splice（1）,从数组中从第二个开始往后删，返回的是包含被删的数据集合。
+	   splice(1,2),从第二个数开始删两个数
+	   splice(1,0,33),在第二个位置上添加一个33，原有的数据向后移动
+	   splice(1,1,22,33)在第二个位置添加22，33，两个数，并且之前在第二个未知的 数据被删掉。
