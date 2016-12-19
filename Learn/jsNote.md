@@ -129,8 +129,35 @@ for(var i=0;i<=5;i++){
 	Bar.prototype = new Foo();
 	Bar.prototype.foo = 'hello world';
 	Bar.prototype.constructor = Bar;
-	var test = new Bar();//创建一个新实例，但是不会创造一个新的Foo实例。而是重复使用它
+	var test = new Bar();//创建一个新实例，但是不会创造一个新的Foo实例。而是重复使用它 
 	原型上的那个实例；因此所欲的Bar实例都会共享相同的value属性。	
 	hasOwnProperty是javascript中唯一一个处理但是不查找原型链的函数。	
 	//js中的hasOwnProperty可能被非法占用。作为一个对象的属性，就不能通过这个方法获取期待的结果了。解决办法如下。
-	({}).hasOwnProperty.call(foo, 'bar');//使用其他对象的hasOwnProperty，并将其上下文设置为foo
+	({}).hasOwnProperty.call(foo, 'bar');//使用其他对象的hasOwnProperty，并将其上下文设置为foo		
+	console.assert(a == 1,'halilya');//当变量a的值为1的时候，输出haliluya（断言调试方法）	
+	arguments instanceof Array //判别对象是什么类型的		
+	//解决时间冒泡的问题。该方式在任何一个响应时间的div上添加都可以达到需要的效果 	
+	 function newevent(event){
+	 var event=event?event:window.event;
+	 if(document.all)
+	  event.cancelBubble=true;
+	 else 
+	  event.stopPropagation();
+	 }		
+	 var a = [1,2,3]  1 in  a//查看1是否在a数组里面		
+	 new Array(count + 1).join(stringToRepeat); //预先设置长度，重复设置字符省去了for的麻烦  new Array(3).join('#')将会返回##	
+	 typeof主要是查看变量是否已经定义。		
+	 
+	 '' + 10 == '10'//true   +'10' == 10//true
+	 !!可以将变量转化为布尔类型的值
+	 options.list || [] //判断元素是否为空，为空的话值为后面的默认值  省去了if else判断的麻烦
+	 
+	 function foo(a, b, c) {}
+	 //调用定时器中的方法传递参数
+	// 不要这样做
+	setTimeout('foo(1,2, 3)', 1000)
+	 
+	// 可以使用匿名函数完成相同功能
+	setTimeout(function() {
+	  foo(1, 2, 3);
+	}, 1000)
