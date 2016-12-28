@@ -20,3 +20,15 @@
 			});
 			$('.startDate').val(formatDate(today));//默认时间显示
 			$('.endDate').val(formatDate(new Date()));
+			
+			
+			map将一组元素转换成其他数组（不论是否是元素数组）
+			$("p").append( $("input").map(function(){//demo
+			  return $(this).val();
+			}).get().join(", ") );
+			[ <p>John, password, http://ejohn.org/</p> ]//结果
+			
+			for (var i = 5;i--;){	console.info('haliluya!!!');	}//打印五次，逆向for循环简洁些
+			
+####hover相当于onmouseover和onmouseout集合体，两个回调函数，一个是移入，另一个是移出事件
+		
