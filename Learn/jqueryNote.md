@@ -31,4 +31,11 @@
 			for (var i = 5;i--;){	console.info('haliluya!!!');	}//打印五次，逆向for循环简洁些
 			
 ####hover相当于onmouseover和onmouseout集合体，两个回调函数，一个是移入，另一个是移出事件
+
+		$('#content img').not('.loaded');//获取不存在样式loaded的图片
+		$.each(array, function(){
+			return (this != 'haliluya' );//当this为haliluya的时侯跳出循环
+		})
 		
+####比较两个数` > < = `三个关系 `return (compA < compB)?-1:(compA > compB)?1:0;`
+#### get函数可以将选中的页面元素集合转化为数组。
