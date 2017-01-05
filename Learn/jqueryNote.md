@@ -38,4 +38,9 @@
 		})
 		
 ####比较两个数` > < = `三个关系 `return (compA < compB)?-1:(compA > compB)?1:0;`
-#### get函数可以将选中的页面元素集合转化为数组。
+#### get函数可以将选中的页面元素集合转化为数组。	
+#### 为jquery dom搜索指定一个上下文$("a", "js_links#div");		
+		$('[type=button]').attr('disabled');//禁用按钮  attr('disabled', '');//解禁按钮
+		$('.className', '#id')//为jquery制定一个上下文，可以大大加快便利dom的速度
+		
+·	
