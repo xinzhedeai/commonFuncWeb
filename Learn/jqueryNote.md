@@ -42,5 +42,6 @@
 #### 为jquery dom搜索指定一个上下文$("a", "js_links#div");		
 		$('[type=button]').attr('disabled');//禁用按钮  attr('disabled', '');//解禁按钮
 		$('.className', '#id')//为jquery制定一个上下文，可以大大加快便利dom的速度
-		
+		doucument.getElementById('baz').href = this.href;
+		$('div.name')比 $('.name')效率要搞 ，建议这么进行dom的选择
 ·	

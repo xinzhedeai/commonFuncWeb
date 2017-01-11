@@ -39,6 +39,7 @@
 	box-pack取值为justify的时候，fixfox浏览器下以start方式展示		
 	
 ####当我们给wai这个div加上overflow:hidden这个属性的时候，其中的nei等等带浮动属性的div的在这个立体的浮动已经被清除了。
+	text-overflow: ellipsis; white-space: nowrap;//文字溢出部分以...显示
 	
 	
 	
