@@ -44,4 +44,7 @@
 		$('.className', '#id')//为jquery制定一个上下文，可以大大加快便利dom的速度
 		doucument.getElementById('baz').href = this.href;
 		$('div.name')比 $('.name')效率要搞 ，建议这么进行dom的选择
-·	
+
+####jquery的val（）方法参数还可以是数组的形式 例如：$(':radio').val(["radio1", "radio2"]);//同时设置value值为radio1和radio2的单选按钮被选中。
+####增加多个类别 addClass（），里面的css类别可以以空格的方式分开
+####删除所有类别。removeClass（）不需要加参数
