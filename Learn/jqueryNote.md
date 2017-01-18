@@ -48,3 +48,6 @@
 ####jquery的val（）方法参数还可以是数组的形式 例如：$(':radio').val(["radio1", "radio2"]);//同时设置value值为radio1和radio2的单选按钮被选中。
 ####增加多个类别 addClass（），里面的css类别可以以空格的方式分开
 ####删除所有类别。removeClass（）不需要加参数
+		$('#divTip').load("b.html .divContent"),  表示获取页面中类divContent下面的内容
+		
+		
