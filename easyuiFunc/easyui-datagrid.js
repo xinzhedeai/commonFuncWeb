@@ -25,7 +25,7 @@ var datagridViewEasyUI = $.extend({}, $.fn.datagrid.defaults.view, {
 		fillWindow();
 	}
 });
-
+/*耶和华祝福满满*/
 /**
  * 
  * @functionName: datagridEasyUI
